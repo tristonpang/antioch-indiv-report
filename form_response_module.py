@@ -3,6 +3,8 @@ import os
 import requests
 from dotenv import load_dotenv
 
+from interfaces.form_response import FormResponse
+
 load_dotenv()
 
 CMRA_FORM_ID = "SKFDhMKo"
@@ -49,6 +51,20 @@ def register_form_webhook():
     response = requests.put(register_webhook_url, headers=headers, json=webhook_data)
 
     return response.json()
+
+
+def parse_raw_response(raw_response):
+    """
+    Parses the raw response from Typeform into a structured format.
+
+    Args:
+        raw_response (dict): The raw response data from Typeform.
+
+    Returns:
+        FormResponse: An instance of FormResponse containing parsed data.
+    """
+
+    return FormResponse(raw_response)
 
 
 if __name__ == "__main__":
