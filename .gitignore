@@ -1,3 +1,5 @@
 indiv-report-env/*
 credentials.json
 token.json
+.env
+__pycache__/*
