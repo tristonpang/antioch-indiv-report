@@ -1,8 +1,13 @@
+import os
+
+import pandas as pd
+import plotly.express as px
 from markdown_pdf import MarkdownPdf, Section
 
 from interfaces.form_response import FormResponse
 
 SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, ipsum id eleifend interdum, lectus tellus iaculis est, ac fringilla tortor ipsum ut elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non mattis neque. Vivamus vel purus dolor. Nunc in efficitur lectus, ac iaculis tortor. Fusce id lorem condimentum, efficitur ante non, tristique ligula. Quisque feugiat velit eu pretium aliquet."
+RADAR_CHART_IMAGE_PATH = "images/radar_chart.png"
 
 
 def generate_report_markdown(data: FormResponse):
@@ -26,7 +31,7 @@ def generate_report_markdown(data: FormResponse):
     #     user_css="h1 {text-align:center;}"
     # )
 
-    pdf.save(f"church_missions_readiness_report_{data['church_name']}.pdf")
+    pdf.save(f"church_missions_readiness_report_{data.answers.church}.pdf")
 
     return "PDF report generated successfully."
 
@@ -34,9 +39,9 @@ def generate_report_markdown(data: FormResponse):
 def insert_cover_page(pdf, data: FormResponse):
     church_name = data.answers.church or "Unknown Church"
     respondent = data.answers.respondent or "Anonymous"
-    role = data.answers.role or ""
+    # role = data.answers.role or ""
 
-    cover_page = f"# Church Missions Readiness Report\n\nPrepared for: {church_name}\n\nCompleted by: {respondent}\n\nDate: {data['date']}\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
+    cover_page = f"# Church Missions Readiness Report\n\nPrepared for: {church_name}\n\nCompleted by: {respondent}\n\nDate: Test Date\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
 
     pdf.add_section(Section(cover_page))
 
@@ -48,7 +53,8 @@ def insert_executive_summary(pdf, data: FormResponse):
 
     executive_summary = f"## Overall Readiness Score: {overall_readiness_score}\n\n{SAMPLE_SUMMARY_PARAGRAPH}\n\n"
 
-    # TODO: Generate and insert radar chart here
+    radar_chart_path = generate_executive_summary_radar_chart(data)
+    executive_summary += f"![Radar Chart]({radar_chart_path})\n\n"
 
     executive_summary += "## Top 3 Strongest Sub-domains\n\n"
     executive_summary += f"- {top_3[0][0]}\n- {top_3[1][0]}\n- {top_3[2][0]}\n\n"
@@ -59,6 +65,50 @@ def insert_executive_summary(pdf, data: FormResponse):
     )
 
     pdf.add_section(Section(executive_summary))
+
+
+def generate_executive_summary_radar_chart(data: FormResponse):
+    """
+    Generate a radar chart for the executive summary.
+
+    Args:
+        data (FormResponse): The data to include in the radar chart.
+
+    Returns:
+        str: The path to the generated radar chart image.
+    """
+    # Placeholder for radar chart generation logic
+    df = pd.DataFrame(
+        dict(
+            r=[
+                data.scores.discipleship,
+                data.scores.sending,
+                data.scores.support,
+                data.scores.structure,
+            ],
+            theta=[
+                "Discipleship",
+                "Sending",
+                "Support",
+                "Structure",
+            ],
+        )
+    )
+    fig = px.line_polar(df, r="r", theta="theta", line_close=True)
+    fig.update_traces(fill="toself")
+    fig.write_image(RADAR_CHART_IMAGE_PATH)
+
+    # This function should create a radar chart based on the scores in `data`
+    # and return the path to the saved image.
+    return RADAR_CHART_IMAGE_PATH
+
+
+def clean_up_radar_chart():
+    """
+    Clean up the radar chart image after use.
+    """
+    if os.path.exists(RADAR_CHART_IMAGE_PATH):
+        os.remove(RADAR_CHART_IMAGE_PATH)
 
 
 if __name__ == "__main__":

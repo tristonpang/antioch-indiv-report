@@ -95,5 +95,5 @@ class FormResponse:
         self.answers = FormResponseAnswersFields(**args_for_answers)
 
         # Form response scores
-        args_for_scores = self.map_scores_args(raw_response["scores"])
+        args_for_scores = self.map_scores_args(raw_response["variables"])
         self.scores = FormResponseScores(**args_for_scores)
