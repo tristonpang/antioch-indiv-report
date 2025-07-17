@@ -31,17 +31,32 @@ def generate_report_markdown(data: FormResponse):
     return "PDF report generated successfully."
 
 
-def insert_cover_page(pdf, data):
-    cover_page = f"# Church Missions Readiness Report\n\nPrepared for: {data['church_name']}\n\nCompleted by: {data['respondent']}\n\nDate: {data['date']}\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
+def insert_cover_page(pdf, data: FormResponse):
+    church_name = data.answers.church or "Unknown Church"
+    respondent = data.answers.respondent or "Anonymous"
+    role = data.answers.role or ""
+
+    cover_page = f"# Church Missions Readiness Report\n\nPrepared for: {church_name}\n\nCompleted by: {respondent}\n\nDate: {data['date']}\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
 
     pdf.add_section(Section(cover_page))
 
 
-def insert_executive_summary(pdf, data):
-    executive_summary = f"## Overall Readiness Score: {data['overall_readiness_score']}\n\n{SAMPLE_SUMMARY_PARAGRAPH}\n\n"
+def insert_executive_summary(pdf, data: FormResponse):
+    overall_readiness_score = data.scores.finalpercentage or 0
+    top_3 = data.scores.top_3_strongest_subdomains
+    bottom_3 = data.scores.bottom_3_weakest_subdomains
+
+    executive_summary = f"## Overall Readiness Score: {overall_readiness_score}\n\n{SAMPLE_SUMMARY_PARAGRAPH}\n\n"
+
+    # TODO: Generate and insert radar chart here
 
     executive_summary += "## Top 3 Strongest Sub-domains\n\n"
-    executive_summary += "- Sub-domain 1\n- Sub-domain 2\n- Sub-domain 3\n\n"
+    executive_summary += f"- {top_3[0][0]}\n- {top_3[1][0]}\n- {top_3[2][0]}\n\n"
+
+    executive_summary += "## 3 Areas for Growth\n\n"
+    executive_summary += (
+        f"- {bottom_3[0][0]}\n- {bottom_3[1][0]}\n- {bottom_3[2][0]}\n\n"
+    )
 
     pdf.add_section(Section(executive_summary))
 

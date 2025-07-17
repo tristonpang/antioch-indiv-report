@@ -21,22 +21,54 @@ class FormResponseAnswersFields:
 
 class FormResponseScores:
     def __init__(self, **kwargs):
-        self.community = kwargs.get("community")
+        # Domain 1: Discipleship
         self.discipleship = kwargs.get("discipleship")
         self.education = kwargs.get("education")
-        self.finalpercentage = kwargs.get("finalpercentage")
-        self.giving = kwargs.get("giving")
-        self.membercare = kwargs.get("membercare")
-        self.organisation = kwargs.get("organisation")
-        self.partnerships = kwargs.get("partnerships")
-        self.policies = kwargs.get("policies")
-        self.praying = kwargs.get("praying")
-        self.score = kwargs.get("score")
+        self.training = kwargs.get("training")
+
+        # Domain 2: Sending
         self.sending = kwargs.get("sending")
         self.sending1 = kwargs.get("sending1")
-        self.structure = kwargs.get("structure")
+        self.membercare = kwargs.get("membercare")
+
+        # Domain 3: Support
         self.support = kwargs.get("support")
-        self.training = kwargs.get("training")
+        self.praying = kwargs.get("praying")
+        self.giving = kwargs.get("giving")
+        self.community = kwargs.get("community")
+
+        # Domain 4: Structure
+        self.structure = kwargs.get("structure")
+        self.organisation = kwargs.get("organisation")
+        self.policies = kwargs.get("policies")
+        self.partnerships = kwargs.get("partnerships")
+
+        ranked_scores = [
+            ("discipleship", self.discipleship),
+            ("education", self.education),
+            ("training", self.training),
+            ("sending", self.sending),
+            ("sending1", self.sending1),
+            ("membercare", self.membercare),
+            ("support", self.support),
+            ("praying", self.praying),
+            ("giving", self.giving),
+            ("community", self.community),
+            ("structure", self.structure),
+            ("organisation", self.organisation),
+            ("policies", self.policies),
+            ("partnerships", self.partnerships),
+        ]
+        ranked_scores.sort(key=lambda x: x[1], reverse=True)
+
+        self.top_3_strongest_subdomains = [ranked_scores[i] for i in range(3)]
+        self.bottom_3_weakest_subdomains = [
+            ranked_scores[i]
+            for i in range(len(ranked_scores) - 1, len(ranked_scores) - 4, -1)
+        ]
+
+        self.score = kwargs.get("score")
+        self.finalpercentage = kwargs.get("finalpercentage")
 
 
 class FormResponse:
