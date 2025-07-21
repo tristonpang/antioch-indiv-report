@@ -6,6 +6,11 @@ from report_module import generate_report_markdown
 app = Flask(__name__)
 
 
+@app.route("/", methods=["GET"])
+def index():
+    return "Welcome to the Antioch21 Report Generator!"
+
+
 @app.route("/backlog-reports", methods=["GET"])
 def generate_backlog_reports():
     responses = retrieve_form_responses()
