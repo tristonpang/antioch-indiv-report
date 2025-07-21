@@ -33,6 +33,7 @@ def generate_report_markdown(data: FormResponse):
 
     report_path = f"church_missions_readiness_report_{data.answers.church}.pdf"
     pdf.save(report_path)
+    clean_up_radar_chart()
 
     return report_path
 

@@ -1,7 +1,8 @@
 from flask import Flask, request
 
+from email_module import gmail_send_message
 from form_response_module import parse_raw_response, retrieve_form_responses
-from report_module import generate_report_markdown
+from report_module import clean_up_report, generate_report_markdown
 
 app = Flask(__name__)
 
@@ -27,7 +28,10 @@ def webhook():
     # Generate report for each response
     report = generate_report_markdown(form_response)
 
-    # TODO: send email for each report
+    # Send email for each report
+    gmail_send_message(form_response.answers.email, report)
+
+    clean_up_report(report)
 
     # Process the webhook data as needed
     return {"status": "success"}

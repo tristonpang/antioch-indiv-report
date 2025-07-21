@@ -45,7 +45,7 @@ def register_form_webhook():
     webhook_data = {
         "url": f"{os.getenv('APP_URL')}/webhook",
         "enabled": True,
-        "events": ["form_response"],
+        "events": ["form_response", "form_response_partial"],
     }
 
     response = requests.put(register_webhook_url, headers=headers, json=webhook_data)
