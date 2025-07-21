@@ -7,8 +7,13 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+from email_module import gmail_send_message
 from form_response_module import parse_raw_response
-from report_module import generate_report_markdown
+from report_module import (
+    clean_up_radar_chart,
+    clean_up_report,
+    generate_report_markdown,
+)
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
@@ -57,7 +62,10 @@ def test_report_generation():
     with open("example-webhook-response.json", "r") as file:
         data = json.load(file)
         form_response = parse_raw_response(data["form_response"])
-        report = generate_report_markdown(form_response)
+        report_path = generate_report_markdown(form_response)
+        gmail_send_message("pang.triston@gmail.com", report_path)
+    clean_up_radar_chart()
+    clean_up_report(report_path)
 
 
 if __name__ == "__main__":

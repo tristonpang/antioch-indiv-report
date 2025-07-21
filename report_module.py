@@ -31,9 +31,10 @@ def generate_report_markdown(data: FormResponse):
     #     user_css="h1 {text-align:center;}"
     # )
 
-    pdf.save(f"church_missions_readiness_report_{data.answers.church}.pdf")
+    report_path = f"church_missions_readiness_report_{data.answers.church}.pdf"
+    pdf.save(report_path)
 
-    return "PDF report generated successfully."
+    return report_path
 
 
 def insert_cover_page(pdf, data: FormResponse):
@@ -77,15 +78,16 @@ def generate_executive_summary_radar_chart(data: FormResponse):
     Returns:
         str: The path to the generated radar chart image.
     """
-    # Placeholder for radar chart generation logic
+    values = [
+        (data.scores.discipleship / 25) * 100,
+        (data.scores.sending / 25) * 100,
+        (data.scores.support / 25) * 100,
+        (data.scores.structure / 25) * 100,
+    ]
+
     df = pd.DataFrame(
         dict(
-            r=[
-                data.scores.discipleship,
-                data.scores.sending,
-                data.scores.support,
-                data.scores.structure,
-            ],
+            r=values,
             theta=[
                 "Discipleship",
                 "Sending",
@@ -109,6 +111,14 @@ def clean_up_radar_chart():
     """
     if os.path.exists(RADAR_CHART_IMAGE_PATH):
         os.remove(RADAR_CHART_IMAGE_PATH)
+
+
+def clean_up_report(report_path):
+    """
+    Clean up the generated report file after use.
+    """
+    if os.path.exists(report_path):
+        os.remove(report_path)
 
 
 if __name__ == "__main__":
