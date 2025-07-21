@@ -1,4 +1,6 @@
 import os
+import string
+from enum import Enum
 
 import pandas as pd
 import plotly.express as px
@@ -8,6 +10,32 @@ from interfaces.form_response import FormResponse
 
 SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, ipsum id eleifend interdum, lectus tellus iaculis est, ac fringilla tortor ipsum ut elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non mattis neque. Vivamus vel purus dolor. Nunc in efficitur lectus, ac iaculis tortor. Fusce id lorem condimentum, efficitur ante non, tristique ligula. Quisque feugiat velit eu pretium aliquet."
 RADAR_CHART_IMAGE_PATH = "images/radar_chart.png"
+
+Subdomains = Enum(
+    "Subdomains",
+    [
+        ("education", "Education"),
+        ("training", "Training"),
+        ("sending1", "Sending"),
+        ("membercare", "Member Care"),
+        ("praying", "Praying"),
+        ("giving", "Giving"),
+        ("community", "Community"),
+        ("organisation", "Organisation"),
+        ("policies", "Policies"),
+        ("partnerships", "Partnerships"),
+    ],
+)
+
+Domains = Enum(
+    "Domains",
+    [
+        ("discipleship", "Discipleship"),
+        ("sending", "Sending"),
+        ("support", "Support"),
+        ("structure", "Structure"),
+    ],
+)
 
 
 def generate_report_markdown(data: FormResponse):
@@ -25,11 +53,25 @@ def generate_report_markdown(data: FormResponse):
 
     insert_cover_page(pdf, data)
     insert_executive_summary(pdf, data)
+    insert_domain_overview_table(pdf, data)
 
-    # pdf.add_section(
-    #     Section(f"""# <a name='head1'></a>Head1\n\n{data['church_name']}\n"""),
-    #     user_css="h1 {text-align:center;}"
-    # )
+    insert_domain_breakdown(
+        pdf, data, 1, Domains.discipleship.value, ["education", "training"]
+    )
+    insert_domain_breakdown(
+        pdf, data, 2, Domains.sending.value, ["sending1", "membercare"]
+    )
+    insert_domain_breakdown(
+        pdf, data, 3, Domains.support.value, ["praying", "giving", "community"]
+    )
+    insert_domain_breakdown(
+        pdf,
+        data,
+        4,
+        Domains.structure.value,
+        ["organisation", "policies", "partnerships"],
+    )
+    insert_final_page(pdf)
 
     report_path = f"church_missions_readiness_report_{data.answers.church}.pdf"
     pdf.save(report_path)
@@ -59,14 +101,81 @@ def insert_executive_summary(pdf, data: FormResponse):
     executive_summary += f"![Radar Chart]({radar_chart_path})\n\n"
 
     executive_summary += "## Top 3 Strongest Sub-domains\n\n"
-    executive_summary += f"- {top_3[0][0]}\n- {top_3[1][0]}\n- {top_3[2][0]}\n\n"
+    executive_summary += f"- {Subdomains[top_3[0][0]].value}\n- {Subdomains[top_3[1][0]].value}\n- {Subdomains[top_3[2][0]].value}\n\n"
 
     executive_summary += "## 3 Areas for Growth\n\n"
-    executive_summary += (
-        f"- {bottom_3[0][0]}\n- {bottom_3[1][0]}\n- {bottom_3[2][0]}\n\n"
-    )
+    executive_summary += f"- {Subdomains[bottom_3[0][0]].value}\n- {Subdomains[bottom_3[1][0]].value}\n- {Subdomains[bottom_3[2][0]].value}\n\n"
 
     pdf.add_section(Section(executive_summary))
+
+
+def insert_domain_overview_table(pdf, data: FormResponse):
+    """
+    Insert a table summarizing the scores for each domain.
+
+    Args:
+        pdf (MarkdownPdf): The PDF object to add the table to.
+        data (FormResponse): The data containing scores for each domain.
+    """
+    table_header = "| Domain | Score (%) | Stage (Avg) | Summary Insight |\n| :--- | :---: | :---: | :--- |\n"
+    table_rows = [
+        f"| {Domains[domain].value} | {(getattr(data.scores, domain) / 25) * 100}% | 0 | Test Summary Insight here |\n"
+        for domain in ["discipleship", "sending", "support", "structure"]
+    ]
+    table_content = "".join(table_rows)
+
+    css = "table, th, td {border: 1px solid black;}"
+
+    pdf.add_section(
+        Section("## Domain Overview\n\n" + table_header + table_content), user_css=css
+    )
+
+
+def insert_domain_breakdown(
+    pdf, data: FormResponse, domain_number, domain_name, subdomains
+):
+    """
+    Insert a breakdown of scores for each sub-domain within each domain.
+
+    Args:
+        pdf (MarkdownPdf): The PDF object to add the breakdown to.
+        data (FormResponse): The data containing scores for each sub-domain.
+    """
+    title = f"## Domain {domain_number}: {domain_name}\n\n"
+    content = ""
+    for subdomain_index, subdomain in enumerate(subdomains):
+        subdomain_name = Subdomains[subdomain].value
+        subdomain_score = getattr(data.scores, subdomain)
+        content += f"### {domain_number}{string.ascii_uppercase[subdomain_index]}. {subdomain_name}\n\n"
+        content += f"Score: {subdomain_score}%\n\n"
+        content += "Stage: 0\n\n"  # Placeholder for stage calculation
+        content += f"Next Step: \n * {SAMPLE_SUMMARY_PARAGRAPH}\n\n"
+    content += "---\n\n"
+
+    pdf.add_section(Section(title + content))
+
+
+def insert_final_page(pdf):
+    """
+    Insert a section for reflections and notes.
+
+    Args:
+        pdf (MarkdownPdf): The PDF object to add the reflections and notes to.
+    """
+    reflections_section = "## Reflections and Notes\n\n"
+    reflections_section += "*Feel free  to complete the following prompts and discuss them with your church leadership team.*\n\n<br>"
+    reflections_section += (
+        "1. What is one area you can improve in the next 3 months? \n\n<br><br>"
+    )
+    reflections_section += "2. Who in your church leadership team can you share this report with? \n\n<br><br>"
+    reflections_section += (
+        "3. What kind of external support would help you grow? \n\n<br><br>"
+    )
+    reflections_section += "<hr>\n\n"
+
+    reflections_section += "**Contact Antioch21 if you’d like help processing your results**\n\n Email: [darrellong@antioch21.sg](mailto:darrellong@antioch21.sg)\n\nWebsite: [antioch21.sg](https://antioch21.sg)\n\n"
+
+    pdf.add_section(Section(reflections_section))
 
 
 def generate_executive_summary_radar_chart(data: FormResponse):

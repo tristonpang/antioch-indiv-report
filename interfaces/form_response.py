@@ -44,17 +44,13 @@ class FormResponseScores:
         self.partnerships = kwargs.get("partnerships")
 
         ranked_scores = [
-            ("discipleship", self.discipleship),
             ("education", self.education),
             ("training", self.training),
-            ("sending", self.sending),
             ("sending1", self.sending1),
             ("membercare", self.membercare),
-            ("support", self.support),
             ("praying", self.praying),
             ("giving", self.giving),
             ("community", self.community),
-            ("structure", self.structure),
             ("organisation", self.organisation),
             ("policies", self.policies),
             ("partnerships", self.partnerships),
