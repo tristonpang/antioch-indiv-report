@@ -1,3 +1,4 @@
+import math
 import os
 import string
 from enum import Enum
@@ -6,6 +7,11 @@ import pandas as pd
 import plotly.express as px
 from markdown_pdf import MarkdownPdf, Section
 
+from content.summary_text import (
+    DOMAIN_LEVEL_SUMMARY_INSIGHTS,
+    KEY_NEXT_STEP,
+    SUBDOMAIN_LEVEL_TEXT_CONTENT,
+)
 from interfaces.form_response import FormResponse
 
 SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, ipsum id eleifend interdum, lectus tellus iaculis est, ac fringilla tortor ipsum ut elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non mattis neque. Vivamus vel purus dolor. Nunc in efficitur lectus, ac iaculis tortor. Fusce id lorem condimentum, efficitur ante non, tristique ligula. Quisque feugiat velit eu pretium aliquet."
@@ -80,6 +86,11 @@ def generate_report_markdown(data: FormResponse):
     return report_path
 
 
+def calculate_stage(score):
+    stage = math.floor((score / 100) * 5)
+    return stage if stage > 0 else 1
+
+
 def insert_cover_page(pdf, data: FormResponse):
     church_name = data.answers.church or "Unknown Church"
     respondent = data.answers.respondent or "Anonymous"
@@ -87,7 +98,9 @@ def insert_cover_page(pdf, data: FormResponse):
 
     cover_page = f"# Church Missions Readiness Report\n\nPrepared for: {church_name}\n\nCompleted by: {respondent}\n\nDate: Test Date\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
 
-    pdf.add_section(Section(cover_page))
+    css = "h1 { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }"
+
+    pdf.add_section(Section(cover_page), user_css=css)
 
 
 def insert_executive_summary(pdf, data: FormResponse):
@@ -101,12 +114,15 @@ def insert_executive_summary(pdf, data: FormResponse):
     executive_summary += f"![Radar Chart]({radar_chart_path})\n\n"
 
     executive_summary += "## Top 3 Strongest Sub-domains\n\n"
-    executive_summary += f"- {Subdomains[top_3[0][0]].value}\n- {Subdomains[top_3[1][0]].value}\n- {Subdomains[top_3[2][0]].value}\n\n"
+    executive_summary += f"- {Subdomains[top_3[0][0]].value} - Stage {calculate_stage(top_3[0][1])}\n- {Subdomains[top_3[1][0]].value} - Stage {calculate_stage(top_3[1][1])}\n- {Subdomains[top_3[2][0]].value} - Stage {calculate_stage(top_3[2][1])}\n\n"
+    # executive_summary += f"<div>{Subdomains[top_3[0][0]].value}\n\nStage {calculate_stage(top_3[0][1])}</div> <div>{Subdomains[top_3[1][0]].value}\n\nStage {calculate_stage(top_3[1][1])}</div> <div>{Subdomains[top_3[2][0]].value}\n\nStage {calculate_stage(top_3[2][1])}</div>\n\n"
 
     executive_summary += "## 3 Areas for Growth\n\n"
-    executive_summary += f"- {Subdomains[bottom_3[0][0]].value}\n- {Subdomains[bottom_3[1][0]].value}\n- {Subdomains[bottom_3[2][0]].value}\n\n"
+    executive_summary += f"- {Subdomains[bottom_3[0][0]].value} - Stage {calculate_stage(bottom_3[0][1])}\n- {Subdomains[bottom_3[1][0]].value} - Stage {calculate_stage(bottom_3[1][1])}\n- {Subdomains[bottom_3[2][0]].value} - Stage {calculate_stage(bottom_3[2][1])}\n\n"
 
-    pdf.add_section(Section(executive_summary))
+    css = "h1 { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; color: #AD0B0B; } div { width: 50px; text-align: center; padding: 10px; border: 1px solid black; border-radius: 5px;  }"
+
+    pdf.add_section(Section(executive_summary), user_css=css)
 
 
 def insert_domain_overview_table(pdf, data: FormResponse):
@@ -119,7 +135,7 @@ def insert_domain_overview_table(pdf, data: FormResponse):
     """
     table_header = "| Domain | Score (%) | Stage (Avg) | Summary Insight |\n| :--- | :---: | :---: | :--- |\n"
     table_rows = [
-        f"| {Domains[domain].value} | {(getattr(data.scores, domain) / 25) * 100}% | 0 | Test Summary Insight here |\n"
+        f"| {Domains[domain].value} | {(getattr(data.scores, domain) / 25) * 100}% | {calculate_stage((getattr(data.scores, domain) / 25) * 100)} | {DOMAIN_LEVEL_SUMMARY_INSIGHTS[domain][calculate_stage((getattr(data.scores, domain) / 25) * 100)]} |\n"
         for domain in ["discipleship", "sending", "support", "structure"]
     ]
     table_content = "".join(table_rows)
@@ -146,10 +162,11 @@ def insert_domain_breakdown(
     for subdomain_index, subdomain in enumerate(subdomains):
         subdomain_name = Subdomains[subdomain].value
         subdomain_score = getattr(data.scores, subdomain)
+        subdomain_stage = calculate_stage(subdomain_score)
         content += f"### {domain_number}{string.ascii_uppercase[subdomain_index]}. {subdomain_name}\n\n"
         content += f"Score: {subdomain_score}%\n\n"
-        content += "Stage: 0\n\n"  # Placeholder for stage calculation
-        content += f"Next Step: \n * {SAMPLE_SUMMARY_PARAGRAPH}\n\n"
+        content += f"Stage: {subdomain_stage}\n\n"
+        content += f"Next Step: \n * {SUBDOMAIN_LEVEL_TEXT_CONTENT[subdomain][subdomain_stage][KEY_NEXT_STEP]}\n\n"
     content += "---\n\n"
 
     pdf.add_section(Section(title + content))
