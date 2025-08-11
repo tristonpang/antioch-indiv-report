@@ -16,6 +16,7 @@ from interfaces.form_response import FormResponse
 
 SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, ipsum id eleifend interdum, lectus tellus iaculis est, ac fringilla tortor ipsum ut elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non mattis neque. Vivamus vel purus dolor. Nunc in efficitur lectus, ac iaculis tortor. Fusce id lorem condimentum, efficitur ante non, tristique ligula. Quisque feugiat velit eu pretium aliquet."
 RADAR_CHART_IMAGE_PATH = "images/radar_chart.png"
+LOGO_IMAGE_PATH = "images/logo_small.png"
 
 Subdomains = Enum(
     "Subdomains",
@@ -40,6 +41,22 @@ Domains = Enum(
         ("sending", "Sending"),
         ("support", "Support"),
         ("structure", "Structure"),
+    ],
+)
+
+IconPaths = Enum(
+    "IconPaths",
+    [
+        ("education", "images/education.png"),
+        ("training", "images/training.png"),
+        ("sending1", "images/sending1.png"),
+        ("membercare", "images/membercare.png"),
+        ("praying", "images/praying.png"),
+        ("giving", "images/giving.png"),
+        ("community", "images/community.png"),
+        ("organisation", "images/organisation.png"),
+        ("policies", "images/policies.png"),
+        ("partnerships", "images/partnerships.png"),
     ],
 )
 
@@ -94,11 +111,12 @@ def calculate_stage(score):
 def insert_cover_page(pdf, data: FormResponse):
     church_name = data.answers.church or "Unknown Church"
     respondent = data.answers.respondent or "Anonymous"
-    # role = data.answers.role or ""
+    submitted_at = data.submitted_at or "Unknown Date"
 
-    cover_page = f"# Church Missions Readiness Report\n\nPrepared for: {church_name}\n\nCompleted by: {respondent}\n\nDate: Test Date\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
+    cover_page = f"![Logo image]({LOGO_IMAGE_PATH})\n\n"
+    cover_page += f"# Church Missions Readiness Report\n\n<br><br>Prepared for: {church_name}\n\nCompleted by: {respondent}\n\nDate: {submitted_at}\n\nBased on the Antioch21 Church Missions Readiness Assessment (CMRA)\n\n"
 
-    css = "h1 { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }"
+    css = "h1 { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; } p { font-family: Arial, sans-serif; text-align: center; }"
 
     pdf.add_section(Section(cover_page), user_css=css)
 
@@ -113,16 +131,23 @@ def insert_executive_summary(pdf, data: FormResponse):
     radar_chart_path = generate_executive_summary_radar_chart(data)
     executive_summary += f"![Radar Chart]({radar_chart_path})\n\n"
 
-    executive_summary += "## Top 3 Strongest Sub-domains\n\n"
-    executive_summary += f"- {Subdomains[top_3[0][0]].value} - Stage {calculate_stage(top_3[0][1])}\n- {Subdomains[top_3[1][0]].value} - Stage {calculate_stage(top_3[1][1])}\n- {Subdomains[top_3[2][0]].value} - Stage {calculate_stage(top_3[2][1])}\n\n"
-    # executive_summary += f"<div>{Subdomains[top_3[0][0]].value}\n\nStage {calculate_stage(top_3[0][1])}</div> <div>{Subdomains[top_3[1][0]].value}\n\nStage {calculate_stage(top_3[1][1])}</div> <div>{Subdomains[top_3[2][0]].value}\n\nStage {calculate_stage(top_3[2][1])}</div>\n\n"
+    domain_summary = "### Top 3 Strongest Sub-domains\n\n"
+    domain_summary += "| | | |\n| :---: | :---: | :---: |\n"
+    domain_summary += f"| ![subdomain1]({IconPaths[top_3[0][0]].value}) | ![subdomain2]({IconPaths[top_3[1][0]].value}) | ![subdomain3]({IconPaths[top_3[2][0]].value}) |\n"
+    domain_summary += f"| {Subdomains[top_3[0][0]].value} | {Subdomains[top_3[1][0]].value} | {Subdomains[top_3[2][0]].value} |\n"
+    domain_summary += f"| Stage {calculate_stage(top_3[0][1])} | Stage {calculate_stage(top_3[1][1])} | Stage {calculate_stage(top_3[2][1])} |\n\n"
 
-    executive_summary += "## 3 Areas for Growth\n\n"
-    executive_summary += f"- {Subdomains[bottom_3[0][0]].value} - Stage {calculate_stage(bottom_3[0][1])}\n- {Subdomains[bottom_3[1][0]].value} - Stage {calculate_stage(bottom_3[1][1])}\n- {Subdomains[bottom_3[2][0]].value} - Stage {calculate_stage(bottom_3[2][1])}\n\n"
+    domain_summary += "### 3 Areas for Growth\n\n"
+    # executive_summary += f"- {Subdomains[bottom_3[0][0]].value} - Stage {calculate_stage(bottom_3[0][1])}\n- {Subdomains[bottom_3[1][0]].value} - Stage {calculate_stage(bottom_3[1][1])}\n- {Subdomains[bottom_3[2][0]].value} - Stage {calculate_stage(bottom_3[2][1])}\n\n"
+    domain_summary += "| | | |\n| :---: | :---: | :---: |\n"
+    domain_summary += f"| ![subdomain1]({IconPaths[bottom_3[0][0]].value}) | ![subdomain2]({IconPaths[bottom_3[1][0]].value}) | ![subdomain3]({IconPaths[bottom_3[2][0]].value}) |\n"
+    domain_summary += f"| {Subdomains[bottom_3[0][0]].value} | {Subdomains[bottom_3[1][0]].value} | {Subdomains[bottom_3[2][0]].value} |\n"
+    domain_summary += f"| Stage {calculate_stage(bottom_3[0][1])} | Stage {calculate_stage(bottom_3[1][1])} | Stage {calculate_stage(bottom_3[2][1])} |\n"
 
-    css = "h1 { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; color: #AD0B0B; } div { width: 50px; text-align: center; padding: 10px; border: 1px solid black; border-radius: 5px;  }"
+    css = "h1 { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; color: #AD0B0B; } table { margin-left: 55px } td { font-family: Arial, sans-serif; padding-left: 30px; padding-right: 30px; text-align: center; } h3 { text-align: center; font-family: Arial, sans-serif; margin-top: 30px} h2, p { font-family: Arial, sans-serif; }"
 
     pdf.add_section(Section(executive_summary), user_css=css)
+    pdf.add_section(Section(domain_summary), user_css=css)
 
 
 def insert_domain_overview_table(pdf, data: FormResponse):
@@ -140,7 +165,7 @@ def insert_domain_overview_table(pdf, data: FormResponse):
     ]
     table_content = "".join(table_rows)
 
-    css = "table, th, td {border: 1px solid black;}"
+    css = "table, th, td { border: 1px solid black; font-family: Arial, sans-serif; } h2 { font-family: Arial, sans-serif; }"
 
     pdf.add_section(
         Section("## Domain Overview\n\n" + table_header + table_content), user_css=css

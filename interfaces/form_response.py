@@ -75,8 +75,7 @@ class FormResponse:
         return args_for_scores
 
     def __init__(self, raw_response):
-        # self.response_id = raw_response["response_id"]
-        # self.response_type = raw_response["response_type"]
+        self.submitted_at = raw_response["submitted_at"]
 
         # Form response answers
         args_for_answers = dict()

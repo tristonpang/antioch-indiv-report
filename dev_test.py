@@ -9,7 +9,6 @@ from googleapiclient.errors import HttpError
 
 from form_response_module import parse_raw_response
 from report_module import (
-    clean_up_radar_chart,
     generate_report_markdown,
 )
 
@@ -62,7 +61,6 @@ def test_report_generation():
         form_response = parse_raw_response(data["form_response"])
         report_path = generate_report_markdown(form_response)
         # gmail_send_message("pang.triston@gmail.com", report_path)
-    clean_up_radar_chart()
 
 
 if __name__ == "__main__":
