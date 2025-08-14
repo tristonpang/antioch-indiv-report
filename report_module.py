@@ -5,6 +5,7 @@ from enum import Enum
 
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from markdown_pdf import MarkdownPdf, Section
 
 from content.summary_text import (
@@ -16,6 +17,7 @@ from interfaces.form_response import FormResponse
 
 SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, ipsum id eleifend interdum, lectus tellus iaculis est, ac fringilla tortor ipsum ut elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non mattis neque. Vivamus vel purus dolor. Nunc in efficitur lectus, ac iaculis tortor. Fusce id lorem condimentum, efficitur ante non, tristique ligula. Quisque feugiat velit eu pretium aliquet."
 RADAR_CHART_IMAGE_PATH = "images/radar_chart.png"
+DOMAIN_TABLE_IMAGE_PATH = "images/domain_table.png"
 LOGO_IMAGE_PATH = "images/logo_small.png"
 
 Subdomains = Enum(
@@ -98,7 +100,7 @@ def generate_report_markdown(data: FormResponse):
 
     report_path = f"church_missions_readiness_report_{data.answers.church}.pdf"
     pdf.save(report_path)
-    clean_up_radar_chart()
+    clean_up_generated_images()
 
     return report_path
 
@@ -158,18 +160,85 @@ def insert_domain_overview_table(pdf, data: FormResponse):
         pdf (MarkdownPdf): The PDF object to add the table to.
         data (FormResponse): The data containing scores for each domain.
     """
-    table_header = "| Domain | Score (%) | Stage (Avg) | Summary Insight |\n| :--- | :---: | :---: | :--- |\n"
-    table_rows = [
-        f"| {Domains[domain].value} | {(getattr(data.scores, domain) / 25) * 100}% | {calculate_stage((getattr(data.scores, domain) / 25) * 100)} | {DOMAIN_LEVEL_SUMMARY_INSIGHTS[domain][calculate_stage((getattr(data.scores, domain) / 25) * 100)]} |\n"
-        for domain in ["discipleship", "sending", "support", "structure"]
-    ]
-    table_content = "".join(table_rows)
+    # table_header = "| Domain | Score (%) | Stage (Avg) | Summary Insight |\n| :--- | :---: | :---: | :--- |\n"
+    # table_rows = [
+    #     f"| {Domains[domain].value} | {(getattr(data.scores, domain) / 25) * 100}% | {calculate_stage((getattr(data.scores, domain) / 25) * 100)} | {DOMAIN_LEVEL_SUMMARY_INSIGHTS[domain][calculate_stage((getattr(data.scores, domain) / 25) * 100)]} |\n"
+    #     for domain in ["discipleship", "sending", "support", "structure"]
+    # ]
+    # table_content = "".join(table_rows)
 
     css = "table, th, td { border: 1px solid black; font-family: Arial, sans-serif; } h2 { font-family: Arial, sans-serif; }"
 
-    pdf.add_section(
-        Section("## Domain Overview\n\n" + table_header + table_content), user_css=css
+    table = f"![domain table]({generate_styled_table(data)})"
+
+    pdf.add_section(Section("## Domain Overview\n\n" + table), user_css=css)
+
+
+def generate_styled_table(data: FormResponse):
+    fig = go.Figure(
+        data=[
+            go.Table(
+                columnwidth=[150, 100, 100, 300],
+                header=dict(
+                    values=["Domain", "Score (%)", "Stage (Avg)", "Summary Insight"],
+                    line_color="darkslategray",
+                    fill_color="lightskyblue",
+                    align="center",
+                ),
+                cells=dict(
+                    values=[
+                        [
+                            Domains[domain].value
+                            for domain in [
+                                "discipleship",
+                                "sending",
+                                "support",
+                                "structure",
+                            ]
+                        ],  # 1st column
+                        [
+                            f"{(getattr(data.scores, domain) / 25) * 100}%"
+                            for domain in [
+                                "discipleship",
+                                "sending",
+                                "support",
+                                "structure",
+                            ]
+                        ],  # 2nd column
+                        [
+                            calculate_stage((getattr(data.scores, domain) / 25) * 100)
+                            for domain in [
+                                "discipleship",
+                                "sending",
+                                "support",
+                                "structure",
+                            ]
+                        ],  # 3rd column
+                        [
+                            DOMAIN_LEVEL_SUMMARY_INSIGHTS[domain][
+                                calculate_stage(
+                                    (getattr(data.scores, domain) / 25) * 100
+                                )
+                            ]
+                            for domain in [
+                                "discipleship",
+                                "sending",
+                                "support",
+                                "structure",
+                            ]
+                        ],  # 4th column
+                    ],
+                    line_color="darkslategray",
+                    fill_color="lightcyan",
+                    align="left",
+                ),
+            )
+        ]
     )
+
+    # fig.update_layout(width=700)
+    fig.write_image(DOMAIN_TABLE_IMAGE_PATH)
+    return DOMAIN_TABLE_IMAGE_PATH
 
 
 def insert_domain_breakdown(
@@ -257,12 +326,14 @@ def generate_executive_summary_radar_chart(data: FormResponse):
     return RADAR_CHART_IMAGE_PATH
 
 
-def clean_up_radar_chart():
+def clean_up_generated_images():
     """
     Clean up the radar chart image after use.
     """
     if os.path.exists(RADAR_CHART_IMAGE_PATH):
         os.remove(RADAR_CHART_IMAGE_PATH)
+    if os.path.exists(DOMAIN_TABLE_IMAGE_PATH):
+        os.remove(DOMAIN_TABLE_IMAGE_PATH)
 
 
 def clean_up_report(report_path):
