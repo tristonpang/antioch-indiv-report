@@ -62,6 +62,16 @@ IconPaths = Enum(
     ],
 )
 
+DomainColors = Enum(
+    "DomainColors",
+    [
+        ("discipleship", "#73a7ff"),
+        ("sending", "#ffbd59"),
+        ("support", "#cb6ce6"),
+        ("structure", "#ff6b6b"),
+    ],
+)
+
 
 def generate_report_markdown(data: FormResponse):
     """
@@ -128,19 +138,18 @@ def insert_executive_summary(pdf, data: FormResponse):
     top_3 = data.scores.top_3_strongest_subdomains
     bottom_3 = data.scores.bottom_3_weakest_subdomains
 
-    executive_summary = f"## Overall Readiness Score: {overall_readiness_score}\n\n{SAMPLE_SUMMARY_PARAGRAPH}\n\n"
+    executive_summary = f"# OVERALL READINESS SCORE: {overall_readiness_score}%\n\n{SAMPLE_SUMMARY_PARAGRAPH}\n\n"
 
     radar_chart_path = generate_executive_summary_radar_chart(data)
     executive_summary += f"![Radar Chart]({radar_chart_path})\n\n"
 
-    domain_summary = "### Top 3 Strongest Sub-domains\n\n"
+    domain_summary = "# Top 3 Strongest Sub-domains\n\n"
     domain_summary += "| | | |\n| :---: | :---: | :---: |\n"
     domain_summary += f"| ![subdomain1]({IconPaths[top_3[0][0]].value}) | ![subdomain2]({IconPaths[top_3[1][0]].value}) | ![subdomain3]({IconPaths[top_3[2][0]].value}) |\n"
     domain_summary += f"| {Subdomains[top_3[0][0]].value} | {Subdomains[top_3[1][0]].value} | {Subdomains[top_3[2][0]].value} |\n"
     domain_summary += f"| Stage {calculate_stage(top_3[0][1])} | Stage {calculate_stage(top_3[1][1])} | Stage {calculate_stage(top_3[2][1])} |\n\n"
 
-    domain_summary += "### 3 Areas for Growth\n\n"
-    # executive_summary += f"- {Subdomains[bottom_3[0][0]].value} - Stage {calculate_stage(bottom_3[0][1])}\n- {Subdomains[bottom_3[1][0]].value} - Stage {calculate_stage(bottom_3[1][1])}\n- {Subdomains[bottom_3[2][0]].value} - Stage {calculate_stage(bottom_3[2][1])}\n\n"
+    domain_summary += "# 3 Areas for Growth\n\n"
     domain_summary += "| | | |\n| :---: | :---: | :---: |\n"
     domain_summary += f"| ![subdomain1]({IconPaths[bottom_3[0][0]].value}) | ![subdomain2]({IconPaths[bottom_3[1][0]].value}) | ![subdomain3]({IconPaths[bottom_3[2][0]].value}) |\n"
     domain_summary += f"| {Subdomains[bottom_3[0][0]].value} | {Subdomains[bottom_3[1][0]].value} | {Subdomains[bottom_3[2][0]].value} |\n"
@@ -167,23 +176,37 @@ def insert_domain_overview_table(pdf, data: FormResponse):
     # ]
     # table_content = "".join(table_rows)
 
-    css = "table, th, td { border: 1px solid black; font-family: Arial, sans-serif; } h2 { font-family: Arial, sans-serif; }"
+    css = "table, th, td { border: 1px solid black; font-family: Arial, sans-serif; } h1 { font-family: Arial, sans-serif; text-align: center; }"
 
     table = f"![domain table]({generate_styled_table(data)})"
 
-    pdf.add_section(Section("## Domain Overview\n\n" + table), user_css=css)
+    pdf.add_section(Section("# DOMAIN OVERVIEW\n\n" + table), user_css=css)
 
 
 def generate_styled_table(data: FormResponse):
+    colors = [
+        [
+            DomainColors[domain].value
+            for domain in [
+                "discipleship",
+                "sending",
+                "support",
+                "structure",
+            ]
+        ]
+        * 4
+    ]
+
     fig = go.Figure(
         data=[
             go.Table(
                 columnwidth=[150, 100, 100, 300],
                 header=dict(
                     values=["Domain", "Score (%)", "Stage (Avg)", "Summary Insight"],
-                    line_color="darkslategray",
                     fill_color="lightskyblue",
                     align="center",
+                    font_size=20,
+                    line=dict(color="#fff", width=12),
                 ),
                 cells=dict(
                     values=[
@@ -228,15 +251,21 @@ def generate_styled_table(data: FormResponse):
                             ]
                         ],  # 4th column
                     ],
-                    line_color="darkslategray",
-                    fill_color="lightcyan",
-                    align="left",
+                    # line_color="darkslategray",
+                    fill_color=colors,
+                    line=dict(color="#fff", width=12),
+                    align=["left", "center", "center", "left"],
+                    font_size=18,
                 ),
             )
         ]
     )
 
-    # fig.update_layout(width=700)
+    # Set the figure to fill the page width and adjust height
+    fig.update_layout(
+        height=400,  # Adjust height as needed
+        margin=dict(l=0, r=0, t=0, b=0),  # Remove margins to maximize space usage
+    )
     fig.write_image(DOMAIN_TABLE_IMAGE_PATH)
     return DOMAIN_TABLE_IMAGE_PATH
 
@@ -276,17 +305,19 @@ def insert_final_page(pdf):
     reflections_section = "## Reflections and Notes\n\n"
     reflections_section += "*Feel free  to complete the following prompts and discuss them with your church leadership team.*\n\n<br>"
     reflections_section += (
-        "1. What is one area you can improve in the next 3 months? \n\n<br><br>"
+        "1. What is one area you can improve in the next 3 months? \n\n<br><br><br>"
     )
-    reflections_section += "2. Who in your church leadership team can you share this report with? \n\n<br><br>"
+    reflections_section += "2. Who in your church leadership team can you share this report with? \n\n<br><br><br>"
     reflections_section += (
-        "3. What kind of external support would help you grow? \n\n<br><br>"
+        "3. What kind of external support would help you grow? \n\n<br><br><br>"
     )
     reflections_section += "<hr>\n\n"
 
     reflections_section += "**Contact Antioch21 if you’d like help processing your results**\n\n Email: [darrellong@antioch21.sg](mailto:darrellong@antioch21.sg)\n\nWebsite: [antioch21.sg](https://antioch21.sg)\n\n"
 
-    pdf.add_section(Section(reflections_section))
+    css = "h1, h2, p { font-family: Arial, sans-serif; }"
+
+    pdf.add_section(Section(reflections_section), user_css=css)
 
 
 def generate_executive_summary_radar_chart(data: FormResponse):
