@@ -7,6 +7,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from markdown_pdf import MarkdownPdf, Section
+from pypdf import PdfWriter
 
 from content.summary_text import (
     DOMAIN_LEVEL_SUMMARY_INSIGHTS,
@@ -19,6 +20,8 @@ SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing e
 RADAR_CHART_IMAGE_PATH = "images/radar_chart.png"
 DOMAIN_TABLE_IMAGE_PATH = "images/domain_table.png"
 LOGO_IMAGE_PATH = "images/logo_small.png"
+COVER_PAGE_PATH = "pages/cover_page.pdf"
+END_PAGE_PATH = "pages/end_page.pdf"
 
 Subdomains = Enum(
     "Subdomains",
@@ -86,7 +89,7 @@ def generate_report_markdown(data: FormResponse):
 
     pdf = MarkdownPdf(toc_level=2, optimize=True)
 
-    insert_cover_page(pdf, data)
+    insert_intro_page(pdf, data)
     insert_executive_summary(pdf, data)
     insert_domain_overview_table(pdf, data)
 
@@ -108,11 +111,18 @@ def generate_report_markdown(data: FormResponse):
     )
     insert_final_page(pdf)
 
-    report_path = f"church_missions_readiness_report_{data.answers.church}.pdf"
-    pdf.save(report_path)
+    intermediate_report_path = (
+        f"church_missions_readiness_report_{data.answers.church}.pdf"
+    )
+    pdf.save(intermediate_report_path)
+
+    final_report_path = insert_static_cover_and_end_pages(intermediate_report_path)
+
     clean_up_generated_images()
 
-    return report_path
+    # TODO: clean up intermediate report
+
+    return final_report_path
 
 
 def calculate_stage(score):
@@ -120,7 +130,20 @@ def calculate_stage(score):
     return stage if stage > 0 else 1
 
 
-def insert_cover_page(pdf, data: FormResponse):
+def insert_static_cover_and_end_pages(report_path: str):
+    new_path = f"a21_{report_path}"
+    merger = PdfWriter()
+
+    for pdf in [COVER_PAGE_PATH, report_path, END_PAGE_PATH]:
+        merger.append(pdf)
+
+    merger.write(new_path)
+    merger.close()
+
+    return new_path
+
+
+def insert_intro_page(pdf, data: FormResponse):
     church_name = data.answers.church or "Unknown Church"
     respondent = data.answers.respondent or "Anonymous"
     submitted_at = data.submitted_at or "Unknown Date"
@@ -292,7 +315,9 @@ def insert_domain_breakdown(
         content += f"Next Step: \n * {SUBDOMAIN_LEVEL_TEXT_CONTENT[subdomain][subdomain_stage][KEY_NEXT_STEP]}\n\n"
     content += "---\n\n"
 
-    pdf.add_section(Section(title + content))
+    css = "h1, h2, h3, p { font-family: Arial, sans-serif; }"
+
+    pdf.add_section(Section(title + content), user_css=css)
 
 
 def insert_final_page(pdf):
