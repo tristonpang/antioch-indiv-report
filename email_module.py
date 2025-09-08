@@ -63,8 +63,8 @@ def gmail_send_message(recipient_email, report_path):
         message.set_content("This is an automated draft mail, testing the Gmail API.")
 
         message["To"] = recipient_email
-        message["From"] = "tristondevelopment@gmail.com"
-        message["Subject"] = "Automated draft for Antioch21"
+        message["From"] = "admin@antioch21.sg"
+        message["Subject"] = "[Antioch21] Church Missions Readiness Assessment Report"
 
         # Attach report
         type_subtype, _ = mimetypes.guess_type(report_path)

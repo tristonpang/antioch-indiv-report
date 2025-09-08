@@ -7,6 +7,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+from email_module import gmail_send_message
 from form_response_module import parse_raw_response
 from report_module import (
     generate_report_markdown,
@@ -60,7 +61,7 @@ def test_report_generation():
         data = json.load(file)
         form_response = parse_raw_response(data["form_response"])
         report_path = generate_report_markdown(form_response)
-        # gmail_send_message("pang.triston@gmail.com", report_path)
+        gmail_send_message("pang.triston@gmail.com", report_path)
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ from content.summary_text import (
 )
 from interfaces.form_response import FormResponse
 
-SAMPLE_SUMMARY_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, ipsum id eleifend interdum, lectus tellus iaculis est, ac fringilla tortor ipsum ut elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non mattis neque. Vivamus vel purus dolor. Nunc in efficitur lectus, ac iaculis tortor. Fusce id lorem condimentum, efficitur ante non, tristique ligula. Quisque feugiat velit eu pretium aliquet."
+SUMMARY_PARAGRAPH = "This report provides a snapshot of your church’s missions readiness based on your self-rated responses to the Church Missions Readiness Assessment (CMRA). The overall readiness score is an average across all domains and should be seen as an indicative measure rather than a final verdict. A lower score does not mean that your church is less ready for missions; rather, it highlights areas that may benefit from further growth and reflection.\n\n The suggestions included in this report are offered as guidance to spark ideas and conversations. Each church is unique, and we encourage you to discern how best to contextualize these findings within your own setting. If multiple participants from your church have completed the CMRA, we recommend sharing and comparing your reports, and using the reflection questions at the end of this document to facilitate healthy discussion as a leadership team.\n\n For further dialogue or support in processing these results, feel free to contact Antioch21 - we would be glad to journey with you."
 RADAR_CHART_IMAGE_PATH = "images/radar_chart.png"
 DOMAIN_TABLE_IMAGE_PATH = "images/domain_table.png"
 LOGO_IMAGE_PATH = "images/logo_small.png"
@@ -120,7 +120,8 @@ def generate_report_markdown(data: FormResponse):
 
     clean_up_generated_images()
 
-    # TODO: clean up intermediate report
+    # clean up intermediate report
+    clean_up_report(intermediate_report_path)
 
     return final_report_path
 
@@ -161,7 +162,7 @@ def insert_executive_summary(pdf, data: FormResponse):
     top_3 = data.scores.top_3_strongest_subdomains
     bottom_3 = data.scores.bottom_3_weakest_subdomains
 
-    executive_summary = f"# OVERALL READINESS SCORE: {overall_readiness_score}%\n\n{SAMPLE_SUMMARY_PARAGRAPH}\n\n"
+    executive_summary = f"# OVERALL READINESS SCORE: {overall_readiness_score}%\n\n{SUMMARY_PARAGRAPH}\n\n"
 
     radar_chart_path = generate_executive_summary_radar_chart(data)
     executive_summary += f"![Radar Chart]({radar_chart_path})\n\n"
@@ -192,13 +193,6 @@ def insert_domain_overview_table(pdf, data: FormResponse):
         pdf (MarkdownPdf): The PDF object to add the table to.
         data (FormResponse): The data containing scores for each domain.
     """
-    # table_header = "| Domain | Score (%) | Stage (Avg) | Summary Insight |\n| :--- | :---: | :---: | :--- |\n"
-    # table_rows = [
-    #     f"| {Domains[domain].value} | {(getattr(data.scores, domain) / 25) * 100}% | {calculate_stage((getattr(data.scores, domain) / 25) * 100)} | {DOMAIN_LEVEL_SUMMARY_INSIGHTS[domain][calculate_stage((getattr(data.scores, domain) / 25) * 100)]} |\n"
-    #     for domain in ["discipleship", "sending", "support", "structure"]
-    # ]
-    # table_content = "".join(table_rows)
-
     css = "table, th, td { border: 1px solid black; font-family: Arial, sans-serif; } h1 { font-family: Arial, sans-serif; text-align: center; }"
 
     table = f"![domain table]({generate_styled_table(data)})"
@@ -315,7 +309,7 @@ def insert_domain_breakdown(
         content += f"Next Step: \n * {SUBDOMAIN_LEVEL_TEXT_CONTENT[subdomain][subdomain_stage][KEY_NEXT_STEP]}\n\n"
     content += "---\n\n"
 
-    css = "h1, h2, h3, p { font-family: Arial, sans-serif; }"
+    css = "h1, h2, h3, p, ul { font-family: Arial, sans-serif; }"
 
     pdf.add_section(Section(title + content), user_css=css)
 

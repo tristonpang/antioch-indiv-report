@@ -1,5 +1,6 @@
 from flask import Flask, request
 
+from dev_test import test_report_generation
 from email_module import gmail_send_message
 from form_response_module import parse_raw_response, retrieve_form_responses
 from report_module import clean_up_report, generate_report_markdown
@@ -35,3 +36,9 @@ def webhook():
 
     # Process the webhook data as needed
     return {"status": "success"}
+
+
+@app.route("/test-email", methods=["GET"])
+def test_email():
+    test_report_generation()
+    return {"status": "email sent"}
