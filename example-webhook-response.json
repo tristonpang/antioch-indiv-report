@@ -1,0 +1,1344 @@
+{
+  "event_id": "01K06P4V1KBQ7PQVXRT2QK3G4K",
+  "event_type": "form_response",
+  "form_response": {
+    "form_id": "SKFDhMKo",
+    "token": "62od47ntir8qx5999sq6862od47iszvn",
+    "landed_at": "2025-07-15T09:18:34Z",
+    "submitted_at": "2025-07-15T09:20:10Z",
+    "calculated": { "score": 95 },
+    "variables": [
+      { "key": "community", "type": "number", "number": 90 },
+      { "key": "discipleship", "type": "number", "number": 19 },
+      { "key": "education", "type": "number", "number": 80 },
+      { "key": "finalpercentage", "type": "number", "number": 76 },
+      { "key": "giving", "type": "number", "number": 70 },
+      { "key": "membercare", "type": "number", "number": 80 },
+      { "key": "organisation", "type": "number", "number": 80 },
+      { "key": "partnerships", "type": "number", "number": 70 },
+      { "key": "policies", "type": "number", "number": 66.67 },
+      { "key": "praying", "type": "number", "number": 60 },
+      { "key": "score", "type": "number", "number": 95 },
+      { "key": "sending", "type": "number", "number": 21 },
+      { "key": "sending1", "type": "number", "number": 86.67 },
+      { "key": "structure", "type": "number", "number": 18.33 },
+      { "key": "support", "type": "number", "number": 18.33 },
+      { "key": "training", "type": "number", "number": 73.33 }
+    ],
+    "definition": {
+      "id": "SKFDhMKo",
+      "title": "Antioch21 Church Missions Readiness Assessment",
+      "fields": [
+        {
+          "id": "sc9NQDVMa5ir",
+          "ref": "ad2f9eb0-0df8-42b0-b310-7738d6a1d20d",
+          "type": "multiple_choice",
+          "title": "*1. DISCIPLESHIP | Education*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "w4f5NwC2s7th",
+              "ref": "83d86a7b-9a51-4ac1-865b-5b7999faf123",
+              "label": "Missions sermon 0-1x per year, missions is featured 1-2 times a year."
+            },
+            {
+              "id": "ekfTKIhR3fu8",
+              "ref": "1fb37256-4fc2-4558-8db6-bd649c2f68a7",
+              "label": "Missions sermons 2-3x per year, missions is featured 3-5 times a year."
+            },
+            {
+              "id": "Xm80gInXgVVM",
+              "ref": "ee7923f2-9b46-4777-9450-91dfdf764056",
+              "label": "Missions sermons 3-4x per year, missions is featured 6-8 times a year, missions special service 1x a year."
+            },
+            {
+              "id": "1zfFLf0cOepz",
+              "ref": "02bf043b-f9e2-4f90-a6c0-9a3284bad1fc",
+              "label": "Missions sermons 5-6x per year, missions featured at least monthly at a worship service, missions special service 1-2x a year."
+            },
+            {
+              "id": "qj6sbWgN9kBp",
+              "ref": "e092435f-bb67-46e6-8426-b65ef9273be7",
+              "label": "Missions sermons more than 6x per year, missions is a regular part of each weekly worship service."
+            }
+          ]
+        },
+        {
+          "id": "9L3bFEDERD1S",
+          "ref": "cb929e24-21b1-4041-a242-51556bafc390",
+          "type": "multiple_choice",
+          "title": "*2. DISCIPLESHIP | Education*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "WdH8l4mEAq35",
+              "ref": "ab86bf02-813a-41ff-bd1c-56096833b033",
+              "label": "Do not see the need and importance to feature global missions."
+            },
+            {
+              "id": "myDu9y51PeEx",
+              "ref": "98e68b9b-4ffd-4d12-b4f5-9e3cd4bcc86e",
+              "label": "Church leaders are aware of Great Commission. Not yet covering it within discipleship / cell life."
+            },
+            {
+              "id": "HrU9NPrhb5VV",
+              "ref": "324e202d-1e03-4f34-a456-87597cc059b3",
+              "label": "Believe all Christians are called to missions. Exploring ways to integrate missions into discipleship and engage more members in mission trips."
+            },
+            {
+              "id": "aU7zLnO6weia",
+              "ref": "51729286-c22e-4089-a11c-f357b157a0de",
+              "label": "Missions is actively taught in discipleship, cell and spiritual formation curriculum. Discipleship / cell groups are encouraged to sow and go for short term missions."
+            },
+            {
+              "id": "UQYJT3ByMKqG",
+              "ref": "f77db98d-1b64-433e-8e71-f92d73897d1f",
+              "label": "Missions are central to spiritual formation, discipleship, mentoring, and ministry in the church. Discipleship / cell groups are actively involved in local and global missions in various ways."
+            }
+          ]
+        },
+        {
+          "id": "o7JxdxO8DUDB",
+          "ref": "dd36263a-0e28-46d7-9017-7e36cfdb7e2e",
+          "type": "multiple_choice",
+          "title": "*3. DISCIPLESHIP | Training*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "2e3nTIJwq0go",
+              "ref": "d0113150-8916-4b7a-a286-7c2b2c2cf202",
+              "label": "No, interested members are to find their own external missions training."
+            },
+            {
+              "id": "KulCP9SVYJVe",
+              "ref": "ad3b3343-5274-48ba-a599-0f24c354a217",
+              "label": "No, church leaders actively refer interested members to external organisations for missions training."
+            },
+            {
+              "id": "LUhcPeOobnJs",
+              "ref": "d6dbad27-ed09-440f-90d9-0f9380084a54",
+              "label": "No, exploring potential missions foundational courses to conduct in-house, or via external ministry."
+            },
+            {
+              "id": "h6eDv7ymVpoC",
+              "ref": "a14806d5-63e8-4379-b6c6-f6b68c995505",
+              "label": "Yes, either by self-developed or via external ministry. Courses may be extensive in content and duration"
+            },
+            {
+              "id": "4vwpZhYsgr7k",
+              "ref": "c7d62900-11e3-4a7c-8bf5-a29a383d906e",
+              "label": "Yes, either by self-developed or via external ministry. A wide range of courses, including some that are extensive in content and duration. Actively identify potential missions candidate to join missions discipleship track."
+            }
+          ]
+        },
+        {
+          "id": "7Vl30pgQoWkG",
+          "ref": "fc7a9b9e-57e0-4f0a-95cf-bc40a4e45781",
+          "type": "multiple_choice",
+          "title": "*4. DISCIPLESHIP | Training*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "unNYxNg2ZAuu",
+              "ref": "5b50ebe3-449e-4bd7-8ec8-44889313e141",
+              "label": "No, interested members are to find their own external missions training."
+            },
+            {
+              "id": "843WUO3ExPbv",
+              "ref": "b2ef971f-1685-4270-b0bf-40b949fc6e31",
+              "label": "No, church leaders actively refer interested members to external organisations for missions training."
+            },
+            {
+              "id": "615hRg9uE5Tn",
+              "ref": "270b67ea-8aa6-495b-8717-dc0bc20591d6",
+              "label": "No, exploring potential short-term missions courses to conduct in-house, or send church members who are interested to join externally"
+            },
+            {
+              "id": "EyNniopqGcnq",
+              "ref": "f5c6c3f5-69e2-41f3-91af-0bf540fe0f54",
+              "label": "Yes, either by self-developed or via external ministry."
+            },
+            {
+              "id": "uxs8YC6IRcDF",
+              "ref": "556dd98d-195c-4c67-bacc-092d8b2af8fb",
+              "label": "Yes, either by self-developed or via external ministry. Have missions mentorship and preparation journey for strong missions volunteers."
+            }
+          ]
+        },
+        {
+          "id": "LARYVld6wEEL",
+          "ref": "afadb371-0daf-43d1-ab18-432737e30f72",
+          "type": "multiple_choice",
+          "title": "*5. DISCIPLESHIP | Training*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "tvH3JdzfP1VE",
+              "ref": "de8e036f-34d2-48ca-9368-b4919728f6d0",
+              "label": "No, interested members to find their own external missions training."
+            },
+            {
+              "id": "pyxuLjPz91Pt",
+              "ref": "625e80c8-e666-4585-84f3-3c0662fa0c2f",
+              "label": "No, church leaders actively refer interested members to external organisations for missions training."
+            },
+            {
+              "id": "a4kz8ynsg5XZ",
+              "ref": "f526b460-0508-4117-aaaa-a0f381a5ebf2",
+              "label": "No, exploring potential missions courses to conduct in-house, or via external ministry."
+            },
+            {
+              "id": "oyxd3KGVA6IW",
+              "ref": "f2b12f48-e4cc-43b5-a0e4-d8f1cb49b3e6",
+              "label": "Yes, either by self-developed programme or via external ministry."
+            },
+            {
+              "id": "Uj9VXRodrP5j",
+              "ref": "1ae456ae-4ace-4d64-83f2-ce4a97db08e5",
+              "label": "Yes, either by self-developed programme or via external ministry. Have missions mentorship and preparation journey for high potential long-term missions candidates."
+            }
+          ]
+        },
+        {
+          "id": "h4dyz1bwsbZP",
+          "ref": "3d21fc76-315a-44c8-b2db-723fb278e8a9",
+          "type": "multiple_choice",
+          "title": "*6. SENDING | Sending*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "xDxhuq8p1bNs",
+              "ref": "53975e9a-3022-4cd6-950c-85a48ed3787b",
+              "label": "No ST team in the past 5 years"
+            },
+            {
+              "id": "BRcqQZ9NTFhl",
+              "ref": "19d3fd62-244c-4f16-a8b2-252c6f3d697f",
+              "label": "Sending short-term missions teams every 2-3 years."
+            },
+            {
+              "id": "kN4NhEYjsYWS",
+              "ref": "fc2dac10-b2b7-4604-af49-683c3a0d0d3f",
+              "label": "Sending short-term missions teams every year, to different overseas ministries on an ad-hoc basis."
+            },
+            {
+              "id": "izzvgtuhbQPW",
+              "ref": "7f044726-9a35-41f0-b015-ab84106b962a",
+              "label": "Actively sending short-term teams every year with some form of partnership with overseas ministries. (Min Sending Ratio: 1 team / 200 members)"
+            },
+            {
+              "id": "7QqNpgyjg4TP",
+              "ref": "4200f6a5-e73f-49cd-8952-452a3af84aee",
+              "label": "Active annual campaign to recruit, train and send short-term teams. (Min Sending Ratio: 1 team / 100 members) Short-term teams are part of a broader missions strategy, with committed oversight and follow-up by missions leadership."
+            }
+          ]
+        },
+        {
+          "id": "JWfxYzDMrZnF",
+          "ref": "1017ab8b-61db-45ce-b4e8-ba44e02c1ff0",
+          "type": "multiple_choice",
+          "title": "*7. SENDING | Sending*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "RaZ98ENNJlNf",
+              "ref": "9aaa70c7-3a4b-4b58-81f9-b7d4c6567d1b",
+              "label": "Not involved with the process of anyone going mid-term"
+            },
+            {
+              "id": "5i71BVkJu1lD",
+              "ref": "d4e7e532-c344-49d8-b8b5-9432ce693026",
+              "label": "Aware of some mid-term interest and makes referrals to mission agencies or external organisations."
+            },
+            {
+              "id": "iVaiIYbXkeUZ",
+              "ref": "c10de3f5-9cac-4540-a666-9110f1a329e3",
+              "label": "Encourages mid-term going with mission agencies or external organisations as a part of members' missions journey."
+            },
+            {
+              "id": "ijNkwvtHVUpg",
+              "ref": "2406f07d-d0e0-487f-b359-8cdb99abd9cd",
+              "label": "Has an in-house mid-term programme or established partnerships with mission agencies or external organisations for members to join."
+            },
+            {
+              "id": "wRrwkNPRJa9f",
+              "ref": "9d76938a-73fe-492b-9a5e-15479ce2d46c",
+              "label": "Active promotion and mobilising of interested candidates from different demographics for mid-term service as an integral part of church's missions strategy."
+            }
+          ]
+        },
+        {
+          "id": "I1f8zTaT03nC",
+          "ref": "34d6d2c5-cc63-40e3-aad6-9fd8919e1d46",
+          "type": "multiple_choice",
+          "title": "*8. SENDING | Sending*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "wTchkGuQVbeu",
+              "ref": "09e7d576-b590-45fa-8cf2-cb7e3cca9a90",
+              "label": "No history or interest in LT missions"
+            },
+            {
+              "id": "CYCQuiWKSoxt",
+              "ref": "a191aae9-7c9c-4370-b761-f5c496d7dc70",
+              "label": "Not yet, but open to and encouraging members for LT missions"
+            },
+            {
+              "id": "UnG1WvBfGStN",
+              "ref": "ff2594d8-6a74-472c-83a1-5c00c6d8d785",
+              "label": "Working to send or have sent out at least 1 LT missionary in the past 5 years. Have a few individuals/families interested."
+            },
+            {
+              "id": "7lYJmW1jmvOY",
+              "ref": "cc3b72f4-0556-44a2-9b5b-c4d5b2dca4b8",
+              "label": "Yes, we do commission and send out LT missionaries. We are gradually cultivating a pipeline of LT candidates. (Min Sending Ratio: 1/150 members)"
+            },
+            {
+              "id": "7UlS3RiXAxZT",
+              "ref": "f99d645a-3c81-4106-b1c8-201ce42491ee",
+              "label": "Yes, we actively commission and send out LT missionaries. We actively cultivate, train a pipeline of LT candidates. We train and send out apostolic teams for specific missions strategy. (Min Sending Raio: 1/75 members)"
+            }
+          ]
+        },
+        {
+          "id": "tNF4MFI0aB8R",
+          "ref": "b5c886f0-fe6c-475d-9945-cf5f68f1f84a",
+          "type": "multiple_choice",
+          "title": "*9. SENDING | Member Care*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "F4KlzlBfuQNO",
+              "ref": "a3db81c5-01c4-45d2-9c12-91731125266e",
+              "label": "No, we do not have any member care awareness, structure or policy."
+            },
+            {
+              "id": "UtfDlpv3YCF2",
+              "ref": "07b03b81-86fe-46e0-a7ce-a13d0c057476",
+              "label": "No, missionaries arrange their own care teams. Church acknowledges the need but prefers to outsource care for LT missionaries. Leaders meet with missionaries when they're back in Singapore."
+            },
+            {
+              "id": "yMIhICFAutro",
+              "ref": "9882d495-2c80-4b0c-8cef-fafa8cc702f3",
+              "label": "Yes to some extent. Church leadership intentionally checks in with LT missionaries when they return to Singapore. External ministries currently provide member care. Missions committee is exploring in-house care for LT missionaries."
+            },
+            {
+              "id": "h7LfibcRGyCp",
+              "ref": "09f0ea15-6cf7-4b61-a58c-ca58435ee442",
+              "label": "Yes. A church leader is assigned to each missionary/family for periodic check-ins (2-3x a year). Basic member care policy is in place. A care team provides check-in, prayer and logistical support for homefront needs."
+            },
+            {
+              "id": "NVvJ8K9B2kvq",
+              "ref": "ba944b7d-9c84-42e4-af84-07176c60d471",
+              "label": "Yes. A church leader is assigned to each missionary for periodic check-ins and on-field visits. In-depth member care policies cover evacuation, re-entry, retirement, etc. Care specialists support in areas like finance, trauma, counselling etc."
+            }
+          ]
+        },
+        {
+          "id": "3uTHxnDyr7TR",
+          "ref": "a233975b-b9f8-46c9-ada0-c8abd652836d",
+          "type": "multiple_choice",
+          "title": "*10. SENDING | Member Care*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "7vOCdqls5Oaw",
+              "ref": "68a98946-ae91-491a-98e4-471c10610910",
+              "label": "No member care awareness/ interest."
+            },
+            {
+              "id": "4uDYQ05ml6YT",
+              "ref": "be68e9f0-4d0c-40ab-9eb6-06a335a42a67",
+              "label": "Some interest, but don't know how to provide care."
+            },
+            {
+              "id": "q7PLpe4hLgUa",
+              "ref": "ac4233e5-e463-4783-9996-ba02e60e55bc",
+              "label": "Some church members informally check in and care for on field missionaries."
+            },
+            {
+              "id": "cdg9NKxnxPU1",
+              "ref": "ca8b987f-3ddb-4ac4-b861-75e292421a21",
+              "label": "Cell groups care/ pray for missionaries from their cell and provide some homefront/ return support on an ad-hoc basis"
+            },
+            {
+              "id": "gpGAkviJmJRB",
+              "ref": "832b6db6-6b65-49eb-8083-90cb795f7af6",
+              "label": "Cell groups intentionally and actively care/ pray for missionaries from their cell, and provide homefront/ return support"
+            }
+          ]
+        },
+        {
+          "id": "W6zXCavPMgLm",
+          "ref": "b8294d26-4af3-4bcb-9700-2bb468dbdeee",
+          "type": "multiple_choice",
+          "title": "*11. SUPPORT | Praying*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "BEoHalebavnu",
+              "ref": "c5639931-8dfd-4103-bcf8-ce35b6f925a6",
+              "label": "None/Low focus"
+            },
+            {
+              "id": "dEzFW1w0OXO9",
+              "ref": "53478613-6672-4304-8cde-d314bd200bca",
+              "label": "Occasional prayer for the world/ global missions."
+            },
+            {
+              "id": "itwATpkxq8T7",
+              "ref": "b52f914b-650a-4c7a-949b-ffaa1b0fe81a",
+              "label": "At least 1x per month. We are trying to mobilise more prayer for nations."
+            },
+            {
+              "id": "w5MIWWhc76sx",
+              "ref": "b1ecb9ee-0e1b-446b-8a26-3b4f5324735a",
+              "label": "At least 2x per month. We are committed to mobilise church to pray for global missions."
+            },
+            {
+              "id": "YdF90lPn3sL0",
+              "ref": "b11841a9-6a6d-4bdb-84e2-a186b3667a98",
+              "label": "At least 3x per month. Global missions is vital to the church."
+            }
+          ]
+        },
+        {
+          "id": "nhDXR7ikL02w",
+          "ref": "738c66ac-e068-4d07-9109-77a61ffef781",
+          "type": "multiple_choice",
+          "title": "*12. SUPPORT | Praying*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "N8HBgvlfODPT",
+              "ref": "5fac1659-e419-4574-914f-d14ac796c0db",
+              "label": "None/Low focus"
+            },
+            {
+              "id": "WSrDg4RXeCVW",
+              "ref": "5de3a3df-747d-40f1-b0d5-1e3f6ab04d10",
+              "label": "1-2x per year"
+            },
+            {
+              "id": "WA5ABB6He0E5",
+              "ref": "5a7b9f9f-0093-43ce-b10d-2bcdfdd99330",
+              "label": "3-6x per year"
+            },
+            {
+              "id": "Q3AlZgx6FpEV",
+              "ref": "a685472a-6a3c-41b6-9ccb-72aa4dece3bd",
+              "label": "Close to monthly (12x per year). Regularly encourage individuals and groups to pray regularly for missions and missionaries."
+            },
+            {
+              "id": "0yId1XnnWzlC",
+              "ref": "097ebb76-4569-4e64-ba94-951336627a03",
+              "label": "More than monthly (>12x per year). Special times of prayer/fasting for nations/persecuted church. Prayer guides for global missions available for church/cell/individual settings. Committed prayer groups are set up for specific missions/nations."
+            }
+          ]
+        },
+        {
+          "id": "AeODVvIAzHyF",
+          "ref": "f8df2efb-0211-4054-b2ef-181b63c4c77f",
+          "type": "multiple_choice",
+          "title": "*13. SUPPORT | Giving*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "0TeZ5386dnQt",
+              "ref": "968f0fd1-4fb9-4b04-9abb-50bf952e0421",
+              "label": "<10%"
+            },
+            {
+              "id": "ZMJs1FnNHdwJ",
+              "ref": "b366aa08-d8f1-4e22-89c5-1b40c76b2959",
+              "label": "10%-19%"
+            },
+            {
+              "id": "eW3gdTvukpIX",
+              "ref": "d2d0599a-efb7-4056-a83e-02ecb58b63ba",
+              "label": "20%-29%"
+            },
+            {
+              "id": "XptEbZqyim5u",
+              "ref": "bedca2a4-5456-4c16-9db8-8ec43276a60c",
+              "label": "30%-39%"
+            },
+            {
+              "id": "cOuQ13aWAaUd",
+              "ref": "b9ef62d0-54b8-447b-9c3d-1dc8f9657e45",
+              "label": ">=40%"
+            }
+          ]
+        },
+        {
+          "id": "nUMW234c3mV1",
+          "ref": "48f8a548-9559-4e35-8d06-3dc42b338761",
+          "type": "multiple_choice",
+          "title": "*14. SUPPORT | Giving*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "ZZE0e4Vr5FIq",
+              "ref": "5971331f-ec38-4afb-8fd7-e3bed34e9a5d",
+              "label": "Very focused on local church needs, church leadership does not see missions giving as a priority."
+            },
+            {
+              "id": "r5PKgH3BMPcD",
+              "ref": "92b0d525-5735-483f-8a93-8e2362f19a11",
+              "label": "Occasional collection for special missions needs e.g. natural disasters, wars, pandemics like COVID-19."
+            },
+            {
+              "id": "Qoe1rPEHUPlf",
+              "ref": "ff31eb5d-70a1-4802-bc99-b608bb1f65ba",
+              "label": "Start to teach congregation to give to local/ overseas missions."
+            },
+            {
+              "id": "d3fg9fVdhPcF",
+              "ref": "dc2ef6d3-172b-467f-9631-8a76749a9720",
+              "label": "Generous to the needs of missions. Challenge congregation to give willingly and joyfully to the needs of missions."
+            },
+            {
+              "id": "6u7Hyz0rwp3Y",
+              "ref": "e042edb0-c4f2-4b54-bede-13741e221355",
+              "label": "Actively support global missions, good teaching/ understanding in missions giving, encourage long term sustainability and not creating financial dependency through giving policies."
+            }
+          ]
+        },
+        {
+          "id": "MUL4ndialUvy",
+          "ref": "bda1ce22-2f84-4365-b1af-cdef91aab1da",
+          "type": "multiple_choice",
+          "title": "*15. SUPPORT | Community*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "RQiYkfXYteFE",
+              "ref": "9567bb05-1eca-41d9-8f8d-8649285a7cba",
+              "label": "No missions community"
+            },
+            {
+              "id": "9otwOjvLK6in",
+              "ref": "3fa1f635-5575-48d9-a0db-a13c3060f662",
+              "label": "We have informal missions community who gather on their own without involvement of church leadership."
+            },
+            {
+              "id": "HVnbItQerbQa",
+              "ref": "35a17636-e9c5-450b-8781-ce11035814dd",
+              "label": "Our missions community gathers 1-2x per year."
+            },
+            {
+              "id": "7E0kGBwLwtfa",
+              "ref": "b3e9983d-d8d3-4185-bde1-29bae7b79dbe",
+              "label": "Our missions community gathers 3-5x per year."
+            },
+            {
+              "id": "d2E3nivGKSsU",
+              "ref": "55289aba-3f30-4f43-947c-1bd5cb7a36d3",
+              "label": "Our missions community actively gathers 6x per year or more."
+            }
+          ]
+        },
+        {
+          "id": "HegIeWacYqia",
+          "ref": "bb607bd5-68d4-44dc-9bdb-cab0bf32a6cf",
+          "type": "multiple_choice",
+          "title": "*16. SUPPORT | Community*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "5UDeNAQHgAew",
+              "ref": "88816a2d-7e50-4d5d-9087-bb6af709d4d2",
+              "label": "No missions mentorship provided."
+            },
+            {
+              "id": "Ry96pMDlifZM",
+              "ref": "17f926c8-6098-4a68-9a73-549f7582cc61",
+              "label": "We do ad-hoc meetings with interested members, initiated by them."
+            },
+            {
+              "id": "G8DdQf3eVl2u",
+              "ref": "4a537367-204c-4d09-b235-ba4e2397dd53",
+              "label": "We proactively set up meetings with interested members to listen and explore how to support their missions journey. We discuss potential LT missions involvement possibilities."
+            },
+            {
+              "id": "UD8DyJXNW0iV",
+              "ref": "c20d3dec-77fa-4c86-9451-e577790b1968",
+              "label": "We actively monitor and meet up with interested members when needed. We have active ongoing conversations for LT mission involvement / participation."
+            },
+            {
+              "id": "lsn98980SDMJ",
+              "ref": "67dad4e4-4b83-4102-8ba1-4e9101889e4e",
+              "label": "Leadership is actively aware and monitoring church members' mission progress, through regular meet-ups with key missions volunteers (>=4x per year), and drawing up personal plans for serious candidates."
+            }
+          ]
+        },
+        {
+          "id": "4Q9PaxhR1mU0",
+          "ref": "f9e79ec6-1a2b-4e14-b743-14fd174830b5",
+          "type": "multiple_choice",
+          "title": "*17. STRUCTURE | Organisation*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "xEmBi7q686JU",
+              "ref": "12a9416a-0752-4649-9cd8-6216659d54a7",
+              "label": "Low missions focus"
+            },
+            {
+              "id": "wum4lVi4L7be",
+              "ref": "34283202-5425-4cde-b010-3862fabbe6ff",
+              "label": "Open to missions"
+            },
+            {
+              "id": "3B70vvIZqpGe",
+              "ref": "d8c64d0a-f617-4a89-9356-b424feac7e0c",
+              "label": "Believes that every Christian is called to the Great Commission. Goes on mission trip every 1-2 years"
+            },
+            {
+              "id": "t5ZfsT1OTKN7",
+              "ref": "7f715bf9-749d-4430-b89e-30bbaad0f495",
+              "label": "Actively championing missions in church. Goes on mission trips 1-3 times a year."
+            },
+            {
+              "id": "KcPS5SbrgtRj",
+              "ref": "f007f2e9-ef9a-49ec-9c0e-fed772f8a781",
+              "label": "Actively championing missions on local / international level. Goes on mission trips at least 4 times a year."
+            }
+          ]
+        },
+        {
+          "id": "XebOQtBihvjB",
+          "ref": "0ece9870-6088-44b1-964c-efd4d32d83b4",
+          "type": "multiple_choice",
+          "title": "*18. STRUCTURE | Organisation*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "t1w6i2nTvzAs",
+              "ref": "815920b7-56c5-4018-8236-befa24727906",
+              "label": "No leader with missions focus"
+            },
+            {
+              "id": "riFszASi2oWr",
+              "ref": "a589be9f-e419-41ca-a19a-4089618bd1b9",
+              "label": "A few (1-2 leaders) open to missions"
+            },
+            {
+              "id": "HB2Pbotaf4N9",
+              "ref": "c1153c38-5143-4732-a78b-be2bd94e1805",
+              "label": "A few (1 or more leaders) championing missions in the church."
+            },
+            {
+              "id": "AtcOoJ1Y5hJT",
+              "ref": "8523dfb6-5e77-4902-a582-8d2257127940",
+              "label": "Close to half (25%-49%) of leadership is championing missions."
+            },
+            {
+              "id": "OBY6sYq100nM",
+              "ref": "fb31bc1f-64be-4a83-80f3-38447d0b2023",
+              "label": "Half or more (>=50%) of leadership is championing missions and go on mission trips at least annually."
+            }
+          ]
+        },
+        {
+          "id": "GGHpvHPwqtfz",
+          "ref": "b5df13c2-bbf6-402e-910b-c694702756f5",
+          "type": "multiple_choice",
+          "title": "*19. STRUCTURE | Organisation*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "EnKHwPxnPx2w",
+              "ref": "266a5482-61a3-4b6a-81bf-df7de53d6d3f",
+              "label": "No missions committee currently"
+            },
+            {
+              "id": "K4mCdeSi40Vl",
+              "ref": "be120c7b-7a92-44e8-bb4f-61ce32997656",
+              "label": "Currently forming a missions committee"
+            },
+            {
+              "id": "RMO6TQ9BEZYD",
+              "ref": "2e8c9d55-a52c-4f94-8f17-036b6c0f9a50",
+              "label": "Stable committee, working for 5 years or more"
+            },
+            {
+              "id": "lPBsRIiWMyjQ",
+              "ref": "ace8b429-f838-4599-b217-289099c289db",
+              "label": "Strong committee with influence in the church"
+            },
+            {
+              "id": "BpZguXSz0XFw",
+              "ref": "4fa052d8-8d37-432c-87a4-c4593bfd620f",
+              "label": "Strong missions committee with strong influence in the church"
+            }
+          ]
+        },
+        {
+          "id": "8nBEDHsnAhni",
+          "ref": "2f29bb25-1d68-4744-a3b5-d6546fca09e9",
+          "type": "multiple_choice",
+          "title": "*20. STRUCTURE | Organisation*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "8vgoFsFzyObk",
+              "ref": "fa522df1-7ace-474a-9691-b09f0aed0fdd",
+              "label": "None"
+            },
+            {
+              "id": "HosJoEg4iTte",
+              "ref": "eb994d77-c22d-4e7d-a661-dbd2b418bf04",
+              "label": "Exploring to start a Missions Dept"
+            },
+            {
+              "id": "IS3Y0HtTIi5P",
+              "ref": "1db6352b-65c5-4f61-9372-3bdcb311585e",
+              "label": ">= 1 Missions Staff"
+            },
+            {
+              "id": "9RGlAMToycb6",
+              "ref": "218bc879-63db-4175-909d-188c7c06cbcc",
+              "label": "Decent Missions Dept (ratio: 1 per 200 members)"
+            },
+            {
+              "id": "WQyVT5SXxAXv",
+              "ref": "f959c7d5-247b-4b35-9807-b91e498bb87a",
+              "label": "Well-staffed Missions Dept (ratio: 1 per 100 members)"
+            }
+          ]
+        },
+        {
+          "id": "wH1ZDjTnd23Z",
+          "ref": "a6591f5c-8177-4cb9-96c7-7e9cd2ea852f",
+          "type": "multiple_choice",
+          "title": "*21. STRUCTURE | Policies*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "o64kTG7GokTw",
+              "ref": "089783d2-ae15-4fd3-9e4b-b57a374245bf",
+              "label": "No missions policy"
+            },
+            {
+              "id": "uluQluSwZHNs",
+              "ref": "c9890f25-276c-42b8-801e-7c62f2bbc090",
+              "label": "Very basic missions policy"
+            },
+            {
+              "id": "KjBZSblooc9Z",
+              "ref": "e28244c2-0bf6-4238-ab6c-e3dd0ce40cd0",
+              "label": "Working missions policy"
+            },
+            {
+              "id": "vr9qxugW0ZQ8",
+              "ref": "34e4108f-3610-4d4c-b2ef-3bfdd087496b",
+              "label": "Stable missions policy, reviewing for update"
+            },
+            {
+              "id": "T5aCmra9n0fl",
+              "ref": "de5f3398-3499-4e81-87a1-b2b3b23de81d",
+              "label": "Up-to-date and robust missions policy"
+            }
+          ]
+        },
+        {
+          "id": "Jg8yzbOmhBQq",
+          "ref": "3001f46a-4d7a-4a34-a734-bdc51a5f7d2a",
+          "type": "multiple_choice",
+          "title": "*22. STRUCTURE | Policies*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "Of8BmQHenx4Q",
+              "ref": "1485ac94-173d-48c3-85a8-845884f540b1",
+              "label": "No mission trip policy"
+            },
+            {
+              "id": "2NvcdemVKziQ",
+              "ref": "4654727d-ced2-4d73-bab1-35aee30176e0",
+              "label": "Very basic mission trip policy"
+            },
+            {
+              "id": "YtNiuy27uGeT",
+              "ref": "0dee1f49-99bd-43d4-a520-b95d0ace234f",
+              "label": "Working mission trip policy"
+            },
+            {
+              "id": "29yKIU2aaDmJ",
+              "ref": "10be9251-1971-4e6f-b432-bd43e932e093",
+              "label": "Stable mission trip policy, and potentially reviewing for update"
+            },
+            {
+              "id": "vDosprVTgHMk",
+              "ref": "0dbc8f1a-8543-4da6-81ac-11052d64f387",
+              "label": "Up-to-date and robust mission trip policy"
+            }
+          ]
+        },
+        {
+          "id": "BR40u1jvyt0y",
+          "ref": "d5446477-1847-4573-9bc5-f5fdea28cf0e",
+          "type": "multiple_choice",
+          "title": "*23. STRUCTURE | Policies*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "nBZNfUwsswh2",
+              "ref": "1a62f95f-6d76-4937-bdc1-10c3bec447e1",
+              "label": "None"
+            },
+            {
+              "id": "pxfXnv2wyAHf",
+              "ref": "64578fed-6bb0-49bb-b288-e69a81d9e0c7",
+              "label": "Exploring to create policies"
+            },
+            {
+              "id": "Wl7GtDoFeKQb",
+              "ref": "827c3bd3-3b66-48f0-bf38-07138fd42065",
+              "label": "Have working long-term missionary policies"
+            },
+            {
+              "id": "BwvHS2NbJsR0",
+              "ref": "6e1fdb5f-8b73-4fcf-a9e7-70091acbaa4e",
+              "label": "On top of LT 'traditional' missionary policy, starting to develop policies for variety of LT mission workers (e.g. tentmakers, business-as-mission etc.)"
+            },
+            {
+              "id": "vd6devOkOJtA",
+              "ref": "550d41a8-7c34-4213-88ba-16591b6fd4dd",
+              "label": "Have up-to-date and robust policies for sending a variety of LT mission workers (e.g. tentmaker, business-as-mission), contingency policies, actively exploring policies to promote missions across different generations."
+            }
+          ]
+        },
+        {
+          "id": "chVoJhdlmL13",
+          "ref": "1ebd45ac-c65d-428c-86b4-4da9f8c87159",
+          "type": "multiple_choice",
+          "title": "*24. STRUCTURE | Partnerships*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "2IlY3fhJQ436",
+              "ref": "68b64567-6db8-4a24-9f9d-5cd6587f3097",
+              "label": "No active relationship"
+            },
+            {
+              "id": "spwFGLmA3BCi",
+              "ref": "58dca683-496b-4f50-82ec-abcaf1fdeff0",
+              "label": "Starting to engage"
+            },
+            {
+              "id": "y253TCAaokJR",
+              "ref": "5d26ac68-177b-472b-914b-ed9a01cc5211",
+              "label": "Working relationships"
+            },
+            {
+              "id": "79DIKa30ZhGo",
+              "ref": "61690607-fc6b-4bd8-bac5-c448e5e16213",
+              "label": "Healthy and productive relationships"
+            },
+            {
+              "id": "PBauHAtJN6wx",
+              "ref": "3e623f6f-0eee-44e1-a6ee-df1e04765304",
+              "label": "Strong synergistic relationships"
+            }
+          ]
+        },
+        {
+          "id": "p6QGxXmmugS2",
+          "ref": "cacc64c3-98e2-4cec-9cf7-c8f3efe6311d",
+          "type": "multiple_choice",
+          "title": "*25. STRUCTURE | Partnerships*",
+          "properties": {},
+          "choices": [
+            {
+              "id": "rdh8yhc6pz5n",
+              "ref": "ece5e25c-a102-4b69-abb1-d7159705e58c",
+              "label": "No relationship"
+            },
+            {
+              "id": "KP3iWMDA992b",
+              "ref": "e5b3d6a9-98e1-469e-b598-2c79663c8bba",
+              "label": "Starting to engage"
+            },
+            {
+              "id": "dDufAu1DP5KR",
+              "ref": "5c8c588c-a50b-4ee1-9452-242248cbc35d",
+              "label": "Establishing working partnerships"
+            },
+            {
+              "id": "oaun2x96FO0l",
+              "ref": "19835163-e1d3-428a-885f-bdd0789b2a84",
+              "label": "Healthy and productive partnerships"
+            },
+            {
+              "id": "GkwG7JwBTF6L",
+              "ref": "480d89d9-29ec-4324-98dc-4ad32adfa29f",
+              "label": "Strong synergistic partnerships, working to advance/ multiply missions in the nations."
+            }
+          ]
+        },
+        {
+          "id": "bIgoRa0GrDiu",
+          "ref": "25d5781e-30fd-43f2-afee-fc3080d0c6c6",
+          "type": "long_text",
+          "title": "*Reflection Questions*",
+          "properties": {}
+        },
+        {
+          "id": "arLhrj936Fpi",
+          "ref": "a5dc21d5-d457-4d83-8488-0f6cb5504a84",
+          "type": "long_text",
+          "title": "*Reflection Questions*",
+          "properties": {}
+        },
+        {
+          "id": "Giy6iakNunac",
+          "ref": "030febe8-3aef-4865-aec8-12dad6cc6c14",
+          "type": "long_text",
+          "title": "*Reflection Questions*",
+          "properties": {}
+        },
+        {
+          "id": "BtF6PfgUaXFU",
+          "ref": "f956134b-72b5-4ef0-b010-fd4852d9ad21",
+          "type": "long_text",
+          "title": "*Reflection Questions*",
+          "properties": {}
+        },
+        {
+          "id": "Wz6EJ0SrP537",
+          "ref": "bc2291bc-ed0d-4ab8-82bb-6f508801525c",
+          "type": "short_text",
+          "title": "*Full Name*",
+          "properties": {}
+        },
+        {
+          "id": "4yBh92Cyp8hz",
+          "ref": "270c6776-edf1-4f64-8c19-9b08b912ca5d",
+          "type": "short_text",
+          "title": "*Name of Church*",
+          "properties": {}
+        },
+        {
+          "id": "mQQ6n4XODVE8",
+          "ref": "9dfc8d01-9c5c-4b21-b7ed-268674eb8e13",
+          "type": "email",
+          "title": "*Email Address*",
+          "properties": {}
+        }
+      ],
+      "endings": [
+        {
+          "id": "DefaultTyScreen",
+          "ref": "default_tys",
+          "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, & beautiful",
+          "type": "thankyou_screen",
+          "properties": {
+            "button_text": "Create a *typeform*",
+            "show_button": true,
+            "share_icons": false,
+            "button_mode": "default_redirect"
+          },
+          "attachment": {
+            "type": "image",
+            "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+          }
+        }
+      ],
+      "settings": { "partial_responses_to_all_integrations": false }
+    },
+    "answers": [
+      {
+        "type": "choice",
+        "choice": {
+          "id": "1zfFLf0cOepz",
+          "label": "Missions sermons 5-6x per year, missions featured at least monthly at a worship service, missions special service 1-2x a year.",
+          "ref": "02bf043b-f9e2-4f90-a6c0-9a3284bad1fc"
+        },
+        "field": {
+          "id": "sc9NQDVMa5ir",
+          "type": "multiple_choice",
+          "ref": "ad2f9eb0-0df8-42b0-b310-7738d6a1d20d"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "aU7zLnO6weia",
+          "label": "Missions is actively taught in discipleship, cell and spiritual formation curriculum. Discipleship / cell groups are encouraged to sow and go for short term missions.",
+          "ref": "51729286-c22e-4089-a11c-f357b157a0de"
+        },
+        "field": {
+          "id": "9L3bFEDERD1S",
+          "type": "multiple_choice",
+          "ref": "cb929e24-21b1-4041-a242-51556bafc390"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "h6eDv7ymVpoC",
+          "label": "Yes, either by self-developed or via external ministry. Courses may be extensive in content and duration",
+          "ref": "a14806d5-63e8-4379-b6c6-f6b68c995505"
+        },
+        "field": {
+          "id": "o7JxdxO8DUDB",
+          "type": "multiple_choice",
+          "ref": "dd36263a-0e28-46d7-9017-7e36cfdb7e2e"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "615hRg9uE5Tn",
+          "label": "No, exploring potential short-term missions courses to conduct in-house, or send church members who are interested to join externally",
+          "ref": "270b67ea-8aa6-495b-8717-dc0bc20591d6"
+        },
+        "field": {
+          "id": "7Vl30pgQoWkG",
+          "type": "multiple_choice",
+          "ref": "fc7a9b9e-57e0-4f0a-95cf-bc40a4e45781"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "oyxd3KGVA6IW",
+          "label": "Yes, either by self-developed programme or via external ministry.",
+          "ref": "f2b12f48-e4cc-43b5-a0e4-d8f1cb49b3e6"
+        },
+        "field": {
+          "id": "LARYVld6wEEL",
+          "type": "multiple_choice",
+          "ref": "afadb371-0daf-43d1-ab18-432737e30f72"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "7QqNpgyjg4TP",
+          "label": "Active annual campaign to recruit, train and send short-term teams. (Min Sending Ratio: 1 team / 100 members) Short-term teams are part of a broader missions strategy, with committed oversight and follow-up by missions leadership.",
+          "ref": "4200f6a5-e73f-49cd-8952-452a3af84aee"
+        },
+        "field": {
+          "id": "h4dyz1bwsbZP",
+          "type": "multiple_choice",
+          "ref": "3d21fc76-315a-44c8-b2db-723fb278e8a9"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "iVaiIYbXkeUZ",
+          "label": "Encourages mid-term going with mission agencies or external organisations as a part of members' missions journey.",
+          "ref": "c10de3f5-9cac-4540-a666-9110f1a329e3"
+        },
+        "field": {
+          "id": "JWfxYzDMrZnF",
+          "type": "multiple_choice",
+          "ref": "1017ab8b-61db-45ce-b4e8-ba44e02c1ff0"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "7UlS3RiXAxZT",
+          "label": "Yes, we actively commission and send out LT missionaries. We actively cultivate, train a pipeline of LT candidates. We train and send out apostolic teams for specific missions strategy. (Min Sending Raio: 1/75 members)",
+          "ref": "f99d645a-3c81-4106-b1c8-201ce42491ee"
+        },
+        "field": {
+          "id": "I1f8zTaT03nC",
+          "type": "multiple_choice",
+          "ref": "34d6d2c5-cc63-40e3-aad6-9fd8919e1d46"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "h7LfibcRGyCp",
+          "label": "Yes. A church leader is assigned to each missionary/family for periodic check-ins (2-3x a year). Basic member care policy is in place. A care team provides check-in, prayer and logistical support for homefront needs.",
+          "ref": "09f0ea15-6cf7-4b61-a58c-ca58435ee442"
+        },
+        "field": {
+          "id": "tNF4MFI0aB8R",
+          "type": "multiple_choice",
+          "ref": "b5c886f0-fe6c-475d-9945-cf5f68f1f84a"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "cdg9NKxnxPU1",
+          "label": "Cell groups care/ pray for missionaries from their cell and provide some homefront/ return support on an ad-hoc basis",
+          "ref": "ca8b987f-3ddb-4ac4-b861-75e292421a21"
+        },
+        "field": {
+          "id": "3uTHxnDyr7TR",
+          "type": "multiple_choice",
+          "ref": "a233975b-b9f8-46c9-ada0-c8abd652836d"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "itwATpkxq8T7",
+          "label": "At least 1x per month. We are trying to mobilise more prayer for nations.",
+          "ref": "b52f914b-650a-4c7a-949b-ffaa1b0fe81a"
+        },
+        "field": {
+          "id": "W6zXCavPMgLm",
+          "type": "multiple_choice",
+          "ref": "b8294d26-4af3-4bcb-9700-2bb468dbdeee"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "WA5ABB6He0E5",
+          "label": "3-6x per year",
+          "ref": "5a7b9f9f-0093-43ce-b10d-2bcdfdd99330"
+        },
+        "field": {
+          "id": "nhDXR7ikL02w",
+          "type": "multiple_choice",
+          "ref": "738c66ac-e068-4d07-9109-77a61ffef781"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "XptEbZqyim5u",
+          "label": "30%-39%",
+          "ref": "bedca2a4-5456-4c16-9db8-8ec43276a60c"
+        },
+        "field": {
+          "id": "AeODVvIAzHyF",
+          "type": "multiple_choice",
+          "ref": "f8df2efb-0211-4054-b2ef-181b63c4c77f"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "Qoe1rPEHUPlf",
+          "label": "Start to teach congregation to give to local/ overseas missions.",
+          "ref": "ff31eb5d-70a1-4802-bc99-b608bb1f65ba"
+        },
+        "field": {
+          "id": "nUMW234c3mV1",
+          "type": "multiple_choice",
+          "ref": "48f8a548-9559-4e35-8d06-3dc42b338761"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "7E0kGBwLwtfa",
+          "label": "Our missions community gathers 3-5x per year.",
+          "ref": "b3e9983d-d8d3-4185-bde1-29bae7b79dbe"
+        },
+        "field": {
+          "id": "MUL4ndialUvy",
+          "type": "multiple_choice",
+          "ref": "bda1ce22-2f84-4365-b1af-cdef91aab1da"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "lsn98980SDMJ",
+          "label": "Leadership is actively aware and monitoring church members' mission progress, through regular meet-ups with key missions volunteers (>=4x per year), and drawing up personal plans for serious candidates.",
+          "ref": "67dad4e4-4b83-4102-8ba1-4e9101889e4e"
+        },
+        "field": {
+          "id": "HegIeWacYqia",
+          "type": "multiple_choice",
+          "ref": "bb607bd5-68d4-44dc-9bdb-cab0bf32a6cf"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "t5ZfsT1OTKN7",
+          "label": "Actively championing missions in church. Goes on mission trips 1-3 times a year.",
+          "ref": "7f715bf9-749d-4430-b89e-30bbaad0f495"
+        },
+        "field": {
+          "id": "4Q9PaxhR1mU0",
+          "type": "multiple_choice",
+          "ref": "f9e79ec6-1a2b-4e14-b743-14fd174830b5"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "OBY6sYq100nM",
+          "label": "Half or more (>=50%) of leadership is championing missions and go on mission trips at least annually.",
+          "ref": "fb31bc1f-64be-4a83-80f3-38447d0b2023"
+        },
+        "field": {
+          "id": "XebOQtBihvjB",
+          "type": "multiple_choice",
+          "ref": "0ece9870-6088-44b1-964c-efd4d32d83b4"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "RMO6TQ9BEZYD",
+          "label": "Stable committee, working for 5 years or more",
+          "ref": "2e8c9d55-a52c-4f94-8f17-036b6c0f9a50"
+        },
+        "field": {
+          "id": "GGHpvHPwqtfz",
+          "type": "multiple_choice",
+          "ref": "b5df13c2-bbf6-402e-910b-c694702756f5"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "9RGlAMToycb6",
+          "label": "Decent Missions Dept (ratio: 1 per 200 members)",
+          "ref": "218bc879-63db-4175-909d-188c7c06cbcc"
+        },
+        "field": {
+          "id": "8nBEDHsnAhni",
+          "type": "multiple_choice",
+          "ref": "2f29bb25-1d68-4744-a3b5-d6546fca09e9"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "KjBZSblooc9Z",
+          "label": "Working missions policy",
+          "ref": "e28244c2-0bf6-4238-ab6c-e3dd0ce40cd0"
+        },
+        "field": {
+          "id": "wH1ZDjTnd23Z",
+          "type": "multiple_choice",
+          "ref": "a6591f5c-8177-4cb9-96c7-7e9cd2ea852f"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "YtNiuy27uGeT",
+          "label": "Working mission trip policy",
+          "ref": "0dee1f49-99bd-43d4-a520-b95d0ace234f"
+        },
+        "field": {
+          "id": "Jg8yzbOmhBQq",
+          "type": "multiple_choice",
+          "ref": "3001f46a-4d7a-4a34-a734-bdc51a5f7d2a"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "BwvHS2NbJsR0",
+          "label": "On top of LT 'traditional' missionary policy, starting to develop policies for variety of LT mission workers (e.g. tentmakers, business-as-mission etc.)",
+          "ref": "6e1fdb5f-8b73-4fcf-a9e7-70091acbaa4e"
+        },
+        "field": {
+          "id": "BR40u1jvyt0y",
+          "type": "multiple_choice",
+          "ref": "d5446477-1847-4573-9bc5-f5fdea28cf0e"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "79DIKa30ZhGo",
+          "label": "Healthy and productive relationships",
+          "ref": "61690607-fc6b-4bd8-bac5-c448e5e16213"
+        },
+        "field": {
+          "id": "chVoJhdlmL13",
+          "type": "multiple_choice",
+          "ref": "1ebd45ac-c65d-428c-86b4-4da9f8c87159"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": {
+          "id": "dDufAu1DP5KR",
+          "label": "Establishing working partnerships",
+          "ref": "5c8c588c-a50b-4ee1-9452-242248cbc35d"
+        },
+        "field": {
+          "id": "p6QGxXmmugS2",
+          "type": "multiple_choice",
+          "ref": "cacc64c3-98e2-4cec-9cf7-c8f3efe6311d"
+        }
+      },
+      {
+        "type": "text",
+        "text": "test",
+        "field": {
+          "id": "bIgoRa0GrDiu",
+          "type": "long_text",
+          "ref": "25d5781e-30fd-43f2-afee-fc3080d0c6c6"
+        }
+      },
+      {
+        "type": "text",
+        "text": "testete",
+        "field": {
+          "id": "arLhrj936Fpi",
+          "type": "long_text",
+          "ref": "a5dc21d5-d457-4d83-8488-0f6cb5504a84"
+        }
+      },
+      {
+        "type": "text",
+        "text": "test",
+        "field": {
+          "id": "Giy6iakNunac",
+          "type": "long_text",
+          "ref": "030febe8-3aef-4865-aec8-12dad6cc6c14"
+        }
+      },
+      {
+        "type": "text",
+        "text": "test",
+        "field": {
+          "id": "BtF6PfgUaXFU",
+          "type": "long_text",
+          "ref": "f956134b-72b5-4ef0-b010-fd4852d9ad21"
+        }
+      },
+      {
+        "type": "text",
+        "text": "John Doe",
+        "field": {
+          "id": "Wz6EJ0SrP537",
+          "type": "short_text",
+          "ref": "bc2291bc-ed0d-4ab8-82bb-6f508801525c"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Antioch21",
+        "field": {
+          "id": "4yBh92Cyp8hz",
+          "type": "short_text",
+          "ref": "270c6776-edf1-4f64-8c19-9b08b912ca5d"
+        }
+      },
+      {
+        "type": "email",
+        "email": "pang.triston@gmail.com",
+        "field": {
+          "id": "mQQ6n4XODVE8",
+          "type": "email",
+          "ref": "9dfc8d01-9c5c-4b21-b7ed-268674eb8e13"
+        }
+      }
+    ],
+    "ending": { "id": "DefaultTyScreen", "ref": "default_tys" }
+  }
+}
