@@ -1,6 +1,7 @@
 import base64
 import mimetypes
 import os.path
+from email import policy
 from email.message import EmailMessage
 
 from google.auth.transport.requests import Request
@@ -58,13 +59,36 @@ def gmail_send_message(recipient_email, report_path):
 
     try:
         service = build("gmail", "v1", credentials=creds)
-        message = EmailMessage()
+        message = EmailMessage(policy=policy.SMTP.clone(max_line_length=1000))
 
-        message.set_content("This is an automated draft mail, testing the Gmail API.")
+        message.set_content(
+            "Greetings from Antioch21! If you are seeing this, the email's full message failed to load. Please refer to further details in your CMRA Report attached.",
+        )
+
+        message.add_alternative(
+            """\
+        <html>
+        <body>
+            <p>Greetings from Antioch21!<br><br>
+            Thank you for completing the Church Missions Readiness Assessment (CMRA). Attached is your individualized report with your overall readiness score and detailed insights for each domain.<br><br>
+            Inside, you’ll find suggested next steps, space for reflection, and prompts to guide discussion with your church leadership or fellow participants. We encourage you to share and compare your reports if others in your church also completed the CMRA.<br><br>
+            If you’d like to process your results or explore ways to grow in missions readiness, we’d be glad to connect - just reach out at <a href="mailto:admin@antioch21.sg">admin@antioch21.sg</a>.<br><br>
+            Warm regards,<br>
+            Darrell Ong<br>
+            Director Of Partnerships<br>
+            Antioch21
+            </p>
+        </body>
+        </html>
+        """,
+            subtype="html",
+        )
 
         message["To"] = recipient_email
-        message["From"] = "admin@antioch21.sg"
-        message["Subject"] = "[Antioch21] Church Missions Readiness Assessment Report"
+        message["From"] = "tristondevelopment@gmail.com"
+        message["Subject"] = (
+            "Your CMRA Report - A Snapshot of Your Church’s Missions Readiness"
+        )
 
         # Attach report
         type_subtype, _ = mimetypes.guess_type(report_path)
@@ -72,7 +96,9 @@ def gmail_send_message(recipient_email, report_path):
 
         with open(report_path, "rb") as fp:
             attachment_data = fp.read()
-            message.add_attachment(attachment_data, maintype, subtype)
+            message.add_attachment(
+                attachment_data, maintype, subtype, filename="CMRA_Report.pdf"
+            )
 
         # encoded message
         encoded_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
