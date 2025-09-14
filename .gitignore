@@ -1,4 +1,5 @@
 indiv-report-env/*
+py311-env/*
 credentials.json
 token.json
 .env
