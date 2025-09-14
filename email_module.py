@@ -85,7 +85,7 @@ def gmail_send_message(recipient_email, report_path):
         )
 
         message["To"] = recipient_email
-        message["From"] = "tristondevelopment@gmail.com"
+        message["From"] = "admin@antioch21.sg"
         message["Subject"] = (
             "Your CMRA Report - A Snapshot of Your Church’s Missions Readiness"
         )
