@@ -3,7 +3,7 @@ FROM python:3.11-slim
 
 # Install system dependencies for Kaleido/Plotly
 RUN apt-get update && apt-get install -y \
-    libglib2.0-0 libnss3 libgconf-2-4 libfontconfig1 libxss1 libasound2 libxtst6 libx11-xcb1 \
+    libglib2.0-0 libnss3 libfontconfig1 libxss1 libasound2 libxtst6 libx11-xcb1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
