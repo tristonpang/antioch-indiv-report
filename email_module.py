@@ -18,6 +18,19 @@ SCOPES = [
 ]
 
 
+def headless_auth(flow):
+    # Set redirect URI for manual/OOB flow
+    flow.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
+
+    auth_url, _ = flow.authorization_url(prompt="consent")
+    print(f"Please go to this URL: {auth_url}")
+    print("After authorization, you will be redirected to a URL.")
+    print("Copy the authorization code from that URL and paste it here:")
+    code = input("Authorization code: ")
+    flow.fetch_token(code=code)
+    return flow.credentials
+
+
 def set_creds():
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
@@ -35,10 +48,10 @@ def set_creds():
                 flow = InstalledAppFlow.from_client_secrets_file(
                     "credentials.json", SCOPES
                 )
-                creds = flow.run_console()
+                creds = headless_auth(flow)
         else:
             flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-            creds = flow.run_console()
+            creds = headless_auth(flow)
         # Save the credentials for the next run
         with open("token.json", "w") as token:
             token.write(creds.to_json())
