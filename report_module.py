@@ -237,7 +237,7 @@ def generate_styled_table(data: FormResponse):
                             ]
                         ],  # 1st column
                         [
-                            f"{(getattr(data.scores, domain) / 25) * 100}%"
+                            f"{round((getattr(data.scores, domain) / 25) * 100, 2)}%"
                             for domain in [
                                 "discipleship",
                                 "sending",
