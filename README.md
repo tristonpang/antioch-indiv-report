@@ -30,7 +30,7 @@ docker build -t indiv-report .
 3. Run docker container
 
 ```
-docker run -p 8080:8080 indiv-report
+docker run -d -p 8080:8080 indiv-report
 ```
 
 4. Exec into the docker container (view container id via `docker ps`)
@@ -39,12 +39,4 @@ docker run -p 8080:8080 indiv-report
 docker exec -it <container_id> /bin/sh
 ```
 
-5. Install remaining dependencies
-
-```
-plotly_get_chrome
-
-apt update && apt-get install libnss3 libatk-bridge2.0-0 libcups2 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libxkbcommon0 libpango-1.0-0 libcairo2 libasound2
-```
-
-6. Login to gmail account using dev_test.py
+5. Login to gmail account using dev_test.py
