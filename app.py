@@ -15,7 +15,19 @@ def index():
 
 @app.route("/backlog-reports", methods=["GET"])
 def generate_backlog_reports():
-    responses = retrieve_form_responses()
+    since = request.args.get("since")
+    until = request.args.get("until")
+    page_size = request.args.get("page_size", 1000, type=int)
+
+    responses = retrieve_form_responses(since=since, until=until, page_size=page_size)
+    print(f"Retrieved {len(responses.get('items', []))} responses")
+    for raw_response in responses.get("items", []):
+        form_response = parse_raw_response(raw_response)
+        report = generate_report_markdown(form_response)
+        gmail_send_message(form_response.answers.email, report)
+        clean_up_report(report)
+        print(f"Processed report for {form_response.answers.email}")
+
     return {"responses": responses}
 
 

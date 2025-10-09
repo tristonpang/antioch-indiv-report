@@ -11,7 +11,7 @@ CMRA_FORM_ID = "SKFDhMKo"
 CMRA_WEBHOOK_NAME = "cmra_webhook"
 
 
-def retrieve_form_responses():
+def retrieve_form_responses(since=None, until=None, page_size=1000):
     """
     Retrieves all CMRA form responses from Typeform.
 
@@ -21,7 +21,8 @@ def retrieve_form_responses():
     access_token = os.getenv("TYPEFORM_PERSONAL_ACCESS_TOKEN")
     get_all_responses_url = f"https://api.typeform.com/forms/{CMRA_FORM_ID}/responses"
     headers = {"Authorization": f"Bearer {access_token}"}
-    responses = requests.get(get_all_responses_url, headers=headers)
+    params = {"since": since, "until": until, "page_size": page_size}
+    responses = requests.get(get_all_responses_url, headers=headers, params=params)
 
     return responses.json()
 
