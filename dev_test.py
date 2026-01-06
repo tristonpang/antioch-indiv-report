@@ -64,6 +64,17 @@ def test_report_generation():
         gmail_send_message("pang.triston@gmail.com", report_path)
 
 
+def generate_backlogged_reports():
+    with open("input-responses.json", "r") as file:
+        data = json.load(file)
+        for raw_response in data["items"]:
+            form_response = parse_raw_response(raw_response)
+            report_path = generate_report_markdown(form_response)
+            gmail_send_message(form_response.answers.email, report_path)
+            print(f"Processed report for {form_response.answers.email}")
+
+
 if __name__ == "__main__":
     # main()
-    test_report_generation()
+    # test_report_generation()
+    generate_backlogged_reports()
